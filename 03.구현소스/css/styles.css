@@ -123,3 +123,165 @@ body {
     transform: translateY(-5px);
   }
 }
+
+/* 마우스 커서 커스텀 */
+.custom-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, backdrop-filter 0.3s ease,
+    background 0.3s ease, border 0.3s ease;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  will-change: left, top;
+}
+
+.custom-cursor.active {
+  width: 60px;
+  height: 60px;
+  backdrop-filter: blur(2px);
+  background: rgba(247, 252, 255, 0.189);
+  border: 2px solid rgba(182, 228, 255, 0.5);
+}
+
+.center-image canvas {
+  cursor: none;
+}
+
+/* Works 섹션 스타일 */
+.works-section {
+  min-height: 100vh;
+  background: #000000;
+  position: relative;
+  padding: 80px 0;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.works-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.works-section * {
+  color: #000000;
+}
+
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+
+}
+
+/* 상단 탭 */
+.work-tab {
+  background: #f5f5f5;
+  color: #000000;
+  padding: 10px 150px;
+  font-size: 14px;
+  letter-spacing: 0px;
+  font-weight: 400;
+  display: inline-block;
+  margin-bottom: 0px;
+  clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 100%, 0 100%);
+}
+
+/* 상단 탭 사선 설정*/
+.work-tab::after {
+    width: 40px;  /* 사선 너비 조절 */
+}
+
+/* 메인 박스 */
+.work-box {
+  background: #f5f5f5;
+  padding: 60px;
+}
+
+/* 컨텐츠 레이아웃 */
+.work-content {
+  display: flex;
+  gap: 60px;
+}
+
+.work-info {
+  flex: 0 0 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.work-title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 30px;
+  color: #000000;
+}
+
+.work-description {
+  font-size: 14px;
+  color: #666666;
+  margin-bottom: auto;
+}
+
+/* 툴 섹션 */
+.work-tools {
+  margin-top: 60px;
+}
+
+.tools-label {
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 20px;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.tool-item {
+  width: 50px;
+  height: 50px;
+  background: #cccccc;
+  border-radius: 4px;
+}
+
+/* 이미지 영역 */
+.work-images {
+  flex: 1;
+  display: flex;
+  gap: 20px;
+}
+
+.image-main {
+  flex: 1;
+  background: #cccccc;
+  min-height: 500px;
+}
+
+.image-side {
+  flex: 0 0 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.image-small {
+  flex: 1;
+  background: #cccccc;
+  min-height: 240px;
+}
+
+/* 기본 커서 숨기기 */
+body * {
+  cursor: none;
+}
