@@ -1,22 +1,90 @@
+// ************************ 네비게이션 숨김/표시 ************************ //
+
+/* 네비게이션 스크롤 동작 */
+let lastScrollTop = 0;
+let scrollTimeout;
+
+window.addEventListener('scroll', function() {
+  const nav = document.querySelector('.nav');
+  const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+  
+  /* 스크롤 멈춤 감지 */
+  clearTimeout(scrollTimeout);
+  
+  /* 스크롤 방향 감지 */
+  if (currentScroll > lastScrollTop) {
+    /* 아래로 스크롤 - 네비게이션 숨김 */
+    nav.classList.add('hidden');
+  } else {
+    /* 위로 스크롤 - 네비게이션 표시 */
+    nav.classList.remove('hidden');
+  }
+  
+  /* 스크롤 멈춤 후 네비게이션 숨김 */
+  scrollTimeout = setTimeout(function() {
+    if (currentScroll > 100) { /* 100px 이상 스크롤 시에만 */
+      nav.classList.add('hidden');
+    }
+  }, 1000); /* 1초 후 숨김 */
+  
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+}, false);
+// ************************ 네비게이션 링크 스크롤 ************************ //
+
+/* 네비게이션 클릭 시 부드러운 스크롤 */
+document.addEventListener('DOMContentLoaded', function() {
+  const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      
+      if (targetSection) {
+        targetSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+});
+
+// ************************ gif 설정 ************************ //
+/* 메인에 gif 이미지 가져오기 */
 const canvas = document.getElementById("je-gif");
 const ctx = canvas.getContext("2d");
 
+// 애니메이션 프레임 설정
+// 총 프레임 수
 const totalFrames = 20;
+// 프레임 배열과 현재 프레임 인덱스
 const frames = [];
+// 현재 표시 중인 프레임 번호
 let currentFrame = 0;
+// 애니메이션 재생 상태
 let isPlaying = true;
+// 로드된 이미지 개수
 let imagesLoaded = 0;
+// 마지막 프레임 표시 시간
 let lastFrameTime = 0;
+// 프레임 간 딜레이 (약 0초)
 const frameDelay = 1000 / 6;
 
+/* gif캔버스 크기 설정 */
 canvas.width = 400;
 canvas.height = 400;
 
+/* 모든 프레임 이미지 미리 로드 */
 for (let i = 1; i <= totalFrames; i++) {
   const img = new Image();
+  // 이미지 로드 완료 시 카운트 증가
   img.src = `./img/animation/144ppi/je_ani_${i}.png`;
   img.onload = function () {
     imagesLoaded++;
+    // 모든 이미지가 로드되면 애니메이션 시작
     if (imagesLoaded === totalFrames) {
       animate(0);
     }
@@ -24,42 +92,57 @@ for (let i = 1; i <= totalFrames; i++) {
   frames.push(img);
 }
 
+// 애니메이션 재생 함수
 function animate(timestamp) {
+  // 재생이 멈춘 상태면 중단
   if (!isPlaying) return;
 
+  // 프레임 딜레이만큼 시간이 지나면 다음 프레임으로
   if (timestamp - lastFrameTime >= frameDelay) {
+    // 이전 프레임 지우기
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // 현재 프레임 그리기
     ctx.drawImage(frames[currentFrame], 0, 0, canvas.width, canvas.height);
 
+    // 다음 프레임으로 이동 (마지막 프레임이면 처음으로)
     currentFrame = (currentFrame + 1) % totalFrames;
     lastFrameTime = timestamp;
   }
 
+  // 다음 프레임 요청
   requestAnimationFrame(animate);
 }
 
+// 마우스가 캔버스에 올라가면 애니메이션 일시정지
 canvas.addEventListener("mouseenter", function () {
   isPlaying = false;
 });
 
+// 마우스가 캔버스에서 벗어나면 애니메이션 재개
 canvas.addEventListener("mouseleave", function () {
   isPlaying = true;
   lastFrameTime = 0;
   requestAnimationFrame(animate);
 });
 
+// ************************************************************ //
+
+// ************************ 마우스 커서 커스텀 ************************ //
 window.addEventListener("DOMContentLoaded", function () {
   const cursor = document.querySelector(".custom-cursor");
 
   if (cursor) {
+    // 마우스 위치 저장 변수
     let mouseX = 0;
     let mouseY = 0;
 
+    // 마우스 이동 시 좌표 업데이트
     document.addEventListener("mousemove", function (e) {
       mouseX = e.clientX;
       mouseY = e.clientY;
     });
 
+    // 커서를 마우스 위치로 부드럽게 이동
     function updateCursor() {
       cursor.style.left = mouseX + "px";
       cursor.style.top = mouseY + "px";
@@ -67,13 +150,16 @@ window.addEventListener("DOMContentLoaded", function () {
     }
     updateCursor();
 
+    // 인터랙티브 요소에 호버 시 커서 확대 효과
     document
       .querySelectorAll("a, canvas, .left-text, .right-text, .scroll-guide")
       .forEach((element) => {
+        // 마우스 올리면 커서에 'active' 클래스 추가 (확대)
         element.addEventListener("mouseenter", function () {
           cursor.classList.add("active");
         });
 
+        // 마우스 벗어나면 'active' 클래스 제거 (원래 크기)
         element.addEventListener("mouseleave", function () {
           cursor.classList.remove("active");
         });
@@ -81,23 +167,169 @@ window.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-/* 스크롤 애니메이션 */
+// ************************************************************ //
+// ************************ 스크롤 애니메이션 ************************ //
+
+// Intersection Observer 옵션 설정
 const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
+  threshold: 0.1,
+  rootMargin: "0px 0px -100px 0px",
 };
 
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
+// 요소가 화면에 보이면 'visible' 클래스 추가
+const observer = new IntersectionObserver(function (entries) {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    }
+  });
 }, observerOptions);
 
-document.addEventListener('DOMContentLoaded', function() {
-    const worksSection = document.querySelector('.works-section');
-    if (worksSection) {
-        observer.observe(worksSection);
-    }
+// Works 섹션 관찰 시작
+document.addEventListener("DOMContentLoaded", function () {
+  const worksSection = document.querySelector(".works-section");
+  if (worksSection) {
+    observer.observe(worksSection);
+  }
 });
+
+// ************************************************************ //
+// ************************ 스티커 패럴랙스 & 드래그 효과 ************************ //
+
+/* 스티커 패럴랙스 효과 */
+document.addEventListener("DOMContentLoaded", function () {
+  const stickers = document.querySelectorAll(".sticker");
+
+  /* 드래그 관련 변수 */
+  let isDragging = false; // 드래그 중인지 확인
+  let currentSticker = null; // 현재 드래그 중인 스티커
+  let offsetX = 0; // 스티커 내 클릭 위치 X
+  let offsetY = 0; // 스티커 내 클릭 위치 Y
+
+  if (stickers.length > 0) {
+    /* 마우스 이동에 따른 패럴랙스 효과 */
+    document.addEventListener('mousemove', function(e) {
+      /* 드래그 중일 때는 드래그 처리 */
+      if (isDragging && currentSticker) {
+        /* 마우스 위치에서 오프셋을 빼서 스티커 위치 계산 */
+        const newLeft = e.clientX - offsetX;
+        const newTop = e.clientY - offsetY;
+        
+        /* 스티커를 absolute 위치로 변경하여 자유롭게 이동 */
+        currentSticker.style.left = newLeft + 'px';
+        currentSticker.style.top = newTop + 'px';
+        currentSticker.style.transform = 'none'; // 패럴랙스 효과 제거
+        
+        return; // 드래그 중에는 패럴랙스 효과 비활성화
+      }
+      
+      /* 드래그 중이 아닐 때만 패럴랙스 효과 적용 */
+      /* 마우스 위치를 0~1 사이 값으로 정규화 */
+      const mouseX = e.clientX / window.innerWidth;
+      const mouseY = e.clientY / window.innerHeight;
+      
+      /* 각 스티커에 패럴랙스 효과 적용 */
+      stickers.forEach(sticker => {
+        /* 드래그로 이동한 스티커는 패럴랙스 효과 제외 */
+        if (sticker.dataset.dragged === 'true') return;
+        
+        /* 각 스티커의 이동 속도 가져오기 */
+        const speed = parseFloat(sticker.getAttribute('data-speed')) || 0.5;
+        
+        /* 마우스 반대 방향으로 이동 거리 계산 (패럴랙스 효과) */
+        const moveX = (mouseX - 0.5) * -50 * speed;
+        const moveY = (mouseY - 0.5) * -50 * speed;
+        
+        /* transform 속성으로 스티커 위치 이동 */
+        sticker.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      });
+    });
+
+    /* 스티커에 드래그 기능 추가 */
+    stickers.forEach(sticker => {
+      /* 마우스 클릭 시작 (드래그 시작) */
+      sticker.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        currentSticker = sticker;
+        
+        /* 스티커 내에서 클릭한 위치 계산 */
+        const rect = sticker.getBoundingClientRect();
+        offsetX = e.clientX - rect.left;
+        offsetY = e.clientY - rect.top;
+        
+        /* 드래그 중임을 표시 */
+        sticker.style.cursor = 'grabbing';
+        sticker.style.zIndex = '5'; // 다른 스티커 위로
+        
+        /* 드래그 중에는 패럴랙스 효과 비활성화 */
+        sticker.dataset.dragged = 'true';
+        
+        e.preventDefault(); // 기본 드래그 동작 방지
+      });
+      
+      /* 스티커에 마우스 올리면 커스텀 커서 활성화 */
+      sticker.addEventListener('mouseenter', function() {
+        const cursor = document.querySelector('.custom-cursor');
+        if (cursor) {
+          cursor.classList.add('active');
+        }
+        /* 드래그 가능함을 나타내는 커서 */
+        if (!isDragging) {
+          sticker.style.cursor = 'grab';
+        }
+      });
+
+      /* 스티커에서 마우스 벗어나면 커스텀 커서 원래대로 */
+      sticker.addEventListener('mouseleave', function() {
+        const cursor = document.querySelector('.custom-cursor');
+        if (cursor) {
+          cursor.classList.remove('active');
+        }
+      });
+    });
+    
+    /* 마우스 버튼을 놓으면 드래그 종료 */
+    document.addEventListener('mouseup', function() {
+      if (isDragging && currentSticker) {
+        isDragging = false;
+        currentSticker.style.cursor = 'grab';
+        currentSticker = null;
+      }
+    });
+    
+    /* 마우스가 화면 밖으로 나가도 드래그 종료 */
+    document.addEventListener('mouseleave', function() {
+      if (isDragging && currentSticker) {
+        isDragging = false;
+        currentSticker.style.cursor = 'grab';
+        currentSticker = null;
+      }
+    });
+  }
+});
+
+// ************************ Works 섹션 애니메이션 ************************ //
+
+/* Intersection Observer로 프로젝트 아이템 애니메이션 */
+const projectObserverOptions = {
+  threshold: 0.2,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const projectObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, projectObserverOptions);
+
+/* 페이지 로드 시 프로젝트 아이템 관찰 */
+document.addEventListener('DOMContentLoaded', function() {
+  const projectItems = document.querySelectorAll('.project-item');
+  projectItems.forEach(item => {
+    projectObserver.observe(item);
+  });
+});
+
+// ************************************************************ //
