@@ -290,7 +290,7 @@ body {
 
 .works-section {
   min-height: 100vh;
-  padding: 120px 80px 80px;
+  /* padding: 120px 80px 80px; */
   align-items: flex-start;
 }
 
@@ -323,47 +323,34 @@ body {
 
 /* 프로젝트 컨텐츠 */
 .project-content {
-  gap: 60px;
+  padding: 0 80px 50px;
 }
 
 /* 프로젝트 정보 */
 .project-info {
   display: flex;
   flex-direction: row;
-  gap: 357px;
+  gap: 300px;
   margin-bottom: 20px;
 }
 
+/* 프로젝트 제목 */
 .project-title {
   font-size: 32px;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 1px;
   margin-bottom: 20px;
   color: #ffffff;
 }
 
-.project-description {
+/* 프로젝트 설명 */
+.project-description, .project-skill, .project-size {
   font-size: 14px;
-  font-weight: 300;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, 0.7);
+  font-weight: 100;
+  /* line-height: 1.8; */
+  color: rgb(255, 255, 255);
   margin-bottom: 30px;
-}
-
-.project-skill {
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 30px;
-}
-
-.project-size {
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 30px;
+  letter-spacing: 0.05em; /* 폰트 크기에 비례하는 단위 */
 }
 
 /* 프로젝트 이미지 */
@@ -415,42 +402,6 @@ body {
 .project-images-slider3 img {
   width: 600px;
   height: 350px;
-  object-fit: cover;
-}
-
-/* Project 4 */
-.project-images-slider4 {
-  display: flex;
-  gap: 5px;
-  width: max-content;
-}
-.project-images-slider4 img {
-  width: 330px;
-  height: 500px;
-  object-fit: cover;
-}
-
-/* Project 5 */
-.project-images-slider5 {
-  display: flex;
-  gap: 5px;
-  width: max-content;
-}
-.project-images-slider5 img {
-  width: 600px;
-  height: 350px;
-  object-fit: cover;
-}
-
-/* Project 6 */
-.project-images-slider6 {
-  display: flex;
-  gap: 5px;
-  width: max-content;
-}
-.project-images-slider6 img {
-  width: 330px;
-  height: 500px;
   object-fit: cover;
 }
 
