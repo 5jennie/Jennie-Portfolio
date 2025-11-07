@@ -443,11 +443,6 @@ body {
   letter-spacing: 1px;
   margin-bottom: 60px;
   color: #ffffff;
-  /* text-align: center;
-  font-size: 16px;
-  font-weight: 100;
-  letter-spacing: 2px;
-  margin-bottom: 200px; */
 }
 
 .more-images {
@@ -457,6 +452,14 @@ body {
   align-items: center;  
   justify-content: center;
   flex-wrap: wrap;
+
+  /* 호버 효과용 투명도 50% */
+  opacity: 0.5;
+}
+
+.more-images :hover{
+  /* 투명도 제거 */
+  opacity: 1;
 }
 
 .more-click-guide {
