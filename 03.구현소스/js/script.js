@@ -10,23 +10,9 @@ if (history.scrollRestoration) {
   history.scrollRestoration = "manual";
 }
 
-// 페이지 로드 즉시 최상단으로
-window.addEventListener("load", function () {
-  setTimeout(function () {
-    window.scrollTo(0, 0);
-  }, 0);
-});
-
 // 부드러운 스크롤 기능
-function smoothScrollTo(target) {
-  const element = document.querySelector(target);
-  if (element) {
-    element.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }
-}
+document.documentElement.style.scrollBehavior = "smooth";
+
 
 /* ***************************************************************** */
 
@@ -131,7 +117,7 @@ window.addEventListener("DOMContentLoaded", function () {
     // 인터랙티브 요소에 호버 시 커서 확대 효과
     document
       .querySelectorAll(
-        "a, canvas, .left-text, .right-text, .scroll-guide, .project-images-slider1, .project-images-slider2, .project-images-slider3"
+        "a, canvas, .scroll-guide, .project-images-slider1, .project-images-slider2, .project-images-slider3, .more-images, .more-click-guide"
       )
       .forEach((element) => {
         // 마우스 올리면 커서에 'active' 클래스 추가 (확대)
