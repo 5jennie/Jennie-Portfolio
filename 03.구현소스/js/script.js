@@ -493,3 +493,29 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 /* ***************************************************************** */
+
+// ******************* more 섹션 애니메이션 ******************* //
+
+/* Intersection Observer로 more 섹션 애니메이션 */
+const moreObserverOptions = {
+  threshold: 0.2,
+  rootMargin: "0px 0px -50px 0px",
+};
+
+const moreObserver = new IntersectionObserver(function (entries) {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    }
+  });
+}, moreObserverOptions);
+
+/* 페이지 로드 시 more 컨테이너 관찰 */
+document.addEventListener("DOMContentLoaded", function () {
+  const moreContainer = document.querySelector(".more-container");
+  if (moreContainer) {
+    moreObserver.observe(moreContainer);
+  }
+});
+
+// ************************************************************ //
