@@ -117,7 +117,7 @@ window.addEventListener("DOMContentLoaded", function () {
     // 인터랙티브 요소에 호버 시 커서 확대 효과
     document
       .querySelectorAll(
-        "a, canvas, .scroll-guide, .project-images-slider1, .project-images-slider2, .project-images-slider3, .more-images, .more-click-guide"
+        "a, canvas, .scroll-guide, .project-images-slider1, .project-images-slider2, .project-images-slider3, .more-images, .more-click"
       )
       .forEach((element) => {
         // 마우스 올리면 커서에 'active' 클래스 추가 (확대)
