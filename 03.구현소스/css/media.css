@@ -81,7 +81,7 @@
     /* 가로 전체 크기 430px의 중앙에 정렬 */
     left: 50%;
     transform: translateX(-50%);
-    top: 30%;
+    top: 20%;
     letter-spacing: 1px;
   }
 
@@ -90,7 +90,7 @@
     /* 가로 전체 크기 430px의 중앙에 정렬 */
     right: 50%;
     transform: translateX(50%);
-    top: 33%;
+    top: 23%;
     letter-spacing: 1px;
   }
 
@@ -135,7 +135,7 @@
 
   .more-images {
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 5px;
   }
 
   .more-img-15 {
