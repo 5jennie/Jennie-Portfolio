@@ -330,6 +330,7 @@ body {
 }
 
 /* 프로젝트 정보 */
+/* 워크 섹션에 들어가는 텍스트 전체 설정 */
 .project-info {
   display: flex;
   flex-direction: row;

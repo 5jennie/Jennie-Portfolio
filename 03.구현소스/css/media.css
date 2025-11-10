@@ -1,0 +1,145 @@
+@charset "UTF-8";
+/* ================================================================ */
+/* 포트폴리오 사이트 - 반응형 미디어 쿼리 (media.css) */
+/* ================================================================ */
+
+/* ***************************************************************** */
+/* PC 작은 사이즈 (max-width: 1400px) */
+@media screen and (max-width: 1400px) {
+  .works-container {
+    /* max-width: 1000px; */
+    margin: 80px auto;
+  }
+
+  .project-content {
+    /* padding: 0 50px 50px; */
+  }
+}
+/* ***************************************************************** */
+
+/* ***************************************************************** */
+/* 태블릿 가로 모드 (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+  .works-section {
+    /* padding: 100px 40px 80px; */
+  }
+
+  .works-container {
+    margin: 60px auto;
+  }
+
+  .project-content {
+    /* padding: 0 30px 50px; */
+  }
+}
+/* ***************************************************************** */
+
+/* ***************************************************************** */
+/* 태블릿 세로 모드 및 모바일 (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  .works-section {
+    /* padding: 100px 20px 80px; */
+  }
+
+  .works-container {
+    margin: 40px auto;
+  }
+
+  .project-content {
+    /* padding: 0 20px 50px; */
+  }
+  /*  8개의 스티커 이미지들 (패럴랙스 효과) 전체 숨김 */
+  .stickers-container {
+    display: none;
+  }
+}
+/* ***************************************************************** */
+
+/* ***************************************************************** */
+/* 모바일 작은 사이즈 (max-width: 430px) 아이폰 14프로맥스 */
+@media screen and (max-width: 430px) {
+  /* ------------------------ 상단 카테고리 섹션 ------------------------ */
+  .nav {
+    padding: 20px 50px;
+  }
+
+  /* ---------------------------- 상단 섹션 ---------------------------- */
+
+  /* 중간 gif이미지 */
+  .center-image {
+    width: 350px;
+    height: 350px;
+  }
+
+  /*  8개의 스티커 이미지들 (패럴랙스 효과) 전체 숨김 */
+  .stickers-container {
+    display: none;
+  }
+
+  /* 왼쪽 텍스트 */
+  .left-text {
+    /* 가로 전체 크기 430px의 중앙에 정렬 */
+    left: 50%;
+    transform: translateX(-50%);
+    top: 30%;
+    letter-spacing: 1px;
+  }
+
+  /* 오른쪽 텍스트 */
+  .right-text {
+    /* 가로 전체 크기 430px의 중앙에 정렬 */
+    right: 50%;
+    transform: translateX(50%);
+    top: 33%;
+    letter-spacing: 1px;
+  }
+
+  /* 스크롤 가이드 위치 조정 */
+  .scroll-guide {
+    position: absolute;
+    bottom: 100px;
+    left: 35%;
+  }
+
+  /* ---------------------------- Works 섹션 ---------------------------- */
+
+  .works-container {
+    margin: 20px auto;
+  }
+
+  /* 프로젝트 정보 */
+  /* 워크 섹션에 들어가는 텍스트 전체 설정 */
+  .project-info {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0px 0px 0px 20px;
+  }
+
+  /* 프로젝트 제목 */
+  .project-title {
+    font-size: 26px;
+  }
+
+  /* ---------------------------- more 섹션 ---------------------------- */
+
+  /* more 섹션 제목 */
+  .more-title {
+    font-size: 26px;
+    margin-bottom: 40px;
+  }
+
+  /* more 섹션의 이미지 */
+  .more-images {
+    padding: 0 10px 100px 10px;
+  }
+
+  .more-images {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .more-img-15 {
+    display: none;
+  }
+}
+/* ***************************************************************** */
