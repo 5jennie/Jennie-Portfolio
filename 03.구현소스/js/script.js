@@ -317,7 +317,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "./img/project/project (7).jpg",
       ],
       minWidth: 250,
-      maxWidth: 700,
+      maxWidth: 500,
       count: 15, // 총 이미지 개수 (같은 이미지 반복)
     },
     {
@@ -332,7 +332,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "./img/project/project (14).jpg",
       ],
       minWidth: 250,
-      maxWidth: 700,
+      maxWidth: 500,
       count: 15,
     },
     {
@@ -347,7 +347,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "./img/project/project (7).jpg",
       ],
       minWidth: 250,
-      maxWidth: 700,
+      maxWidth: 500,
       count: 15,
     },
   ];
