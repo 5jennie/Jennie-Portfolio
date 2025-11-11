@@ -1,0 +1,24 @@
+/* 프리텐다드 폰트 관련 */
+/* font-weight: 숫자입력;
+200 = ExtraLight (매우 얇음)
+300 = Light (얇음) ← 현재
+400 = Regular (보통)
+500 = Medium (중간)
+600 = SemiBold (약간 두꺼움)
+700 = Bold (두꺼움) */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #000000;
+  color: #ffffff;
+}

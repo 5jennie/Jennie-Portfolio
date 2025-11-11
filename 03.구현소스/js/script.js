@@ -13,7 +13,6 @@ if (history.scrollRestoration) {
 // 부드러운 스크롤 기능
 document.documentElement.style.scrollBehavior = "smooth";
 
-
 /* ***************************************************************** */
 
 // ************************ gif 설정 ************************ //
@@ -316,8 +315,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "./img/project/project (6).jpg",
         "./img/project/project (7).jpg",
       ],
-      minWidth: 250,
-      maxWidth: 500,
+      minWidth: 300,
+      maxWidth: 600,
       count: 15, // 총 이미지 개수 (같은 이미지 반복)
     },
     {
@@ -331,8 +330,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "./img/project/project (13).jpg",
         "./img/project/project (14).jpg",
       ],
-      minWidth: 250,
-      maxWidth: 500,
+      minWidth: 300,
+      maxWidth: 600,
       count: 15,
     },
     {
@@ -346,20 +345,30 @@ document.addEventListener("DOMContentLoaded", function () {
         "./img/project/project (6).jpg",
         "./img/project/project (7).jpg",
       ],
-      minWidth: 250,
-      maxWidth: 500,
+      minWidth: 300,
+      maxWidth: 600,
       count: 15,
     },
   ];
 
   /* 이미지 원본 크기를 가져와서 비율 계산하는 함수 */
-  function loadImageWithRatio(imagePath, targetWidth) {
+  function loadImageWithRatio(imagePath, minWidth, maxWidth) {
     return new Promise((resolve) => {
       const img = new Image();
       img.onload = function () {
-        // /* 원본 이미지의 가로/세로 비율 계산 */
         const aspectRatio = this.naturalHeight / this.naturalWidth;
-        // /* 타겟 너비에 맞춰 높이 자동 계산 */
+        const isHorizontal = this.naturalWidth >= this.naturalHeight;
+
+        /* 가로형 이미지: maxWidth 기준, 세로형 이미지: minWidth 기준 */
+        let targetWidth;
+        if (isHorizontal) {
+          // 가로형: maxWidth 기준으로 랜덤 생성 (maxWidth의 80~100%)
+          targetWidth =
+            Math.ceil(Math.random() * (maxWidth * 0.2)) + maxWidth * 0.8;
+        } else {
+          // 세로형: minWidth 기준으로 랜덤 생성 (minWidth의 100~120%)
+          targetWidth = Math.ceil(Math.random() * (minWidth * 0.2)) + minWidth;
+        }
         const calculatedHeight = Math.ceil(targetWidth * aspectRatio);
 
         resolve({
@@ -386,13 +395,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const imageIndex = i % project.images.length;
         const imagePath = project.images[imageIndex];
 
-        /* 랜덤 너비 생성 */
-        const randomWidth =
-          Math.ceil(Math.random() * (project.maxWidth - project.minWidth)) +
-          project.minWidth;
-
-        /* 원본 비율을 유지하면서 크기 계산 */
-        imagePromises.push(loadImageWithRatio(imagePath, randomWidth));
+        /* minWidth, maxWidth를 함수에 전달하여 이미지 비율에 따라 처리 */
+        imagePromises.push(
+          loadImageWithRatio(imagePath, project.minWidth, project.maxWidth)
+        );
       }
     }
 
