@@ -6,13 +6,75 @@
 /* ***************************************************************** */
 /* PC 작은 사이즈 (max-width: 1400px) */
 @media screen and (max-width: 1400px) {
-  .works-container {
-    /* max-width: 1000px; */
-    margin: 80px auto;
+}
+
+/* ***************************************************************** */
+
+/* ***************************************************************** */
+/* 태블릿 가로 모드 (max-width: 1180px) 아이패드 에어 */
+@media screen and (max-width: 1180px) {
+  
+  /* 중간 이미지 뒤에 스티커 */
+  /* 왼쪽 영역 */
+  .sticker-1 {
+    top: 30%;
+    left: 20%;
+    width: 300px;
+    height: 300px;
   }
 
-  .project-content {
-    /* padding: 0 50px 50px; */
+  .sticker-2 {
+    top: 50%;
+    left: 25%;
+    width: 300px;
+    height: 300px;
+  }
+
+  /* 왼쪽 중앙 */
+  .sticker-3 {
+    top: 20%;
+    left: 35%;
+    width: 200px;
+    height: 200px;
+  }
+
+  /* 상단 중앙 */
+  .sticker-4 {
+    top: 25%;
+    left: 50%;
+    width: 150px;
+    height: 150px;
+  }
+
+  /* 하단 중앙 */
+  .sticker-5 {
+    bottom: 20%;
+    left: 46%;
+    width: 200px;
+    height: 200px;
+  }
+
+  /* 오른쪽 중앙 */
+  .sticker-6 {
+    top: 15%;
+    right: 25%;
+    width: 200px;
+    height: 200px;
+  }
+
+  /* 오른쪽 영역 */
+  .sticker-7 {
+    top: 30%;
+    right: 10%;
+    width: 330px;
+    height: 330px;
+  }
+
+  .sticker-8 {
+    top: 50%;
+    right: 20%;
+    width: 250px;
+    height: 250px;
   }
 }
 /* ***************************************************************** */
@@ -20,16 +82,77 @@
 /* ***************************************************************** */
 /* 태블릿 가로 모드 (max-width: 1024px) 아이패드 미니 */
 @media screen and (max-width: 1024px) {
-  .works-section {
-    /* padding: 100px 40px 80px; */
+  /* 중간 gif이미지 */
+  .center-image {
+    width: 400px;
+    height: 400px;
   }
 
-  .works-container {
-    margin: 60px auto;
+  /* 오른쪽 텍스트 */
+  .right-text {
+    right: 70px;
   }
 
-  .project-content {
-    /* padding: 0 30px 50px; */
+  /* 왼쪽 텍스트 */
+  .left-text {
+    left: 70px;
+  }
+
+  /* ************************ */
+  /* 중간 이미지 뒤에 스티커 */
+
+  /* 왼쪽 영역 */
+  .sticker-1 {
+    top: 20%;
+    left: 23%;
+    width: 150px;
+  }
+
+  .sticker-2 {
+    top: 44%;
+    left: 25%;
+    width: 250px;
+  }
+
+  /* 왼쪽 중앙 */
+  .sticker-3 {
+    top: 16%;
+    left: 29%;
+    width: 125px;
+  }
+
+  /* 상단 중앙 */
+  .sticker-4 {
+    top: 17%;
+    left: 51%;
+    width: 150px;
+  }
+
+  /* 하단 중앙 */
+  .sticker-5 {
+    bottom: 16%;
+    left: 57%;
+    width: 160px;
+  }
+
+  /* 오른쪽 중앙 */
+  .sticker-6 {
+    top: 20%;
+    right: 28%;
+    width: 140px;
+  }
+
+  /* 오른쪽 영역 */
+  .sticker-7 {
+    top: 25%;
+    right: 15%;
+    width: 180px;
+  }
+
+  .sticker-8 {
+    top: 40%;
+    right: 23%;
+    width: 120px;
   }
 }
 /* ***************************************************************** */
