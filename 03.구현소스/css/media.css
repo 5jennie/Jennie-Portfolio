@@ -6,6 +6,157 @@
 /* ***************************************************************** */
 /* PC 작은 사이즈 (max-width: 1400px) */
 @media screen and (max-width: 1400px) {
+  /* ---------------------------- 상단 섹션 ---------------------------- */
+  /* 중간 이미지 뒤에 스티커 */
+  /* 왼쪽 영역 */
+  .sticker-1 {
+    top: 18%;
+    left: 20%;
+    width: 350px;
+    height: 350px;
+  }
+
+  .sticker-2 {
+    top: 51%;
+    left: 25%;
+    width: 350px;
+    height: 350px;
+  }
+
+  /* 왼쪽 중앙 */
+  .sticker-3 {
+    top: 25%;
+    left: 38%;
+    width: 225px;
+    height: 225px;
+  }
+
+  /* 상단 중앙 */
+  .sticker-4 {
+    top: 20%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+  }
+
+  /* 하단 중앙 */
+  .sticker-5 {
+    bottom: 19%;
+    left: 53%;
+    width: 200px;
+    height: 260px;
+  }
+
+  /* 오른쪽 중앙 */
+  .sticker-6 {
+    top: 15%;
+    right: 20%;
+    width: 255px;
+    height: 255px;
+  }
+
+  /* 오른쪽 영역 */
+  .sticker-7 {
+    top: 33%;
+    right: 11%;
+    width: 336px;
+    height: 380px;
+  }
+
+  .sticker-8 {
+    top: 56%;
+    right: 23%;
+    width: 227px;
+    height: 340px;
+  }
+
+  /* ---------------------------- Works 섹션 ---------------------------- */
+
+  /* 프로젝트 정보 */
+  /* 워크 섹션에 들어가는 텍스트 전체 설정 */
+  .project-info {
+    gap: 80px;
+    padding: 0 20px 0;
+  }
+}
+
+/* ***************************************************************** */
+
+/* ***************************************************************** */
+/*태블릿 가로 모드 (max-width: 1366px) 아이패드 프로 */
+@media screen and (max-width: 1366px) {
+  /* ---------------------------- 상단 섹션 ---------------------------- */
+  /* 중간 이미지 뒤에 스티커 */
+  /* 왼쪽 영역 */
+  .sticker-1 {
+    top: 18%;
+    left: 20%;
+    width: 350px;
+    height: 350px;
+  }
+
+  .sticker-2 {
+    top: 51%;
+    left: 25%;
+    width: 350px;
+    height: 350px;
+  }
+
+  /* 왼쪽 중앙 */
+  .sticker-3 {
+    top: 25%;
+    left: 38%;
+    width: 225px;
+    height: 225px;
+  }
+
+  /* 상단 중앙 */
+  .sticker-4 {
+    top: 20%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+  }
+
+  /* 하단 중앙 */
+  .sticker-5 {
+    bottom: 19%;
+    left: 53%;
+    width: 200px;
+    height: 260px;
+  }
+
+  /* 오른쪽 중앙 */
+  .sticker-6 {
+    top: 15%;
+    right: 20%;
+    width: 255px;
+    height: 255px;
+  }
+
+  /* 오른쪽 영역 */
+  .sticker-7 {
+    top: 33%;
+    right: 11%;
+    width: 336px;
+    height: 380px;
+  }
+
+  .sticker-8 {
+    top: 56%;
+    right: 23%;
+    width: 227px;
+    height: 340px;
+  }
+
+  /* ---------------------------- Works 섹션 ---------------------------- */
+
+  /* 프로젝트 정보 */
+  /* 워크 섹션에 들어가는 텍스트 전체 설정 */
+  .project-info {
+    gap: 80px;
+    padding: 0 20px 0;
+  }
 }
 
 /* ***************************************************************** */
@@ -13,7 +164,7 @@
 /* ***************************************************************** */
 /* 태블릿 가로 모드 (max-width: 1180px) 아이패드 에어 */
 @media screen and (max-width: 1180px) {
-  
+  /* ---------------------------- 상단 섹션 ---------------------------- */
   /* 중간 이미지 뒤에 스티커 */
   /* 왼쪽 영역 */
   .sticker-1 {
@@ -76,12 +227,23 @@
     width: 250px;
     height: 250px;
   }
+
+  /* ---------------------------- Works 섹션 ---------------------------- */
+
+  /* 프로젝트 정보 */
+  /* 워크 섹션에 들어가는 텍스트 전체 설정 */
+  .project-info {
+    gap: 80px;
+    padding: 0 20px 0;
+  }
 }
+
 /* ***************************************************************** */
 
 /* ***************************************************************** */
 /* 태블릿 가로 모드 (max-width: 1024px) 아이패드 미니 */
 @media screen and (max-width: 1024px) {
+  /* ---------------------------- 상단 섹션 ---------------------------- */
   /* 중간 gif이미지 */
   .center-image {
     width: 400px;
@@ -97,62 +259,77 @@
   .left-text {
     left: 70px;
   }
-
-  /* ************************ */
+ /* ---------------------------- 상단 섹션 ---------------------------- */
   /* 중간 이미지 뒤에 스티커 */
-
   /* 왼쪽 영역 */
   .sticker-1 {
-    top: 20%;
-    left: 23%;
-    width: 150px;
+    top: 30%;
+    left: 20%;
+    width: 300px;
+    height: 300px;
   }
 
   .sticker-2 {
-    top: 44%;
+    top: 50%;
     left: 25%;
-    width: 250px;
+    width: 300px;
+    height: 300px;
   }
 
   /* 왼쪽 중앙 */
   .sticker-3 {
-    top: 16%;
-    left: 29%;
-    width: 125px;
+    top: 20%;
+    left: 35%;
+    width: 200px;
+    height: 200px;
   }
 
   /* 상단 중앙 */
   .sticker-4 {
-    top: 17%;
-    left: 51%;
+    top: 25%;
+    left: 50%;
     width: 150px;
+    height: 150px;
   }
 
   /* 하단 중앙 */
   .sticker-5 {
-    bottom: 16%;
-    left: 57%;
-    width: 160px;
+    bottom: 20%;
+    left: 46%;
+    width: 200px;
+    height: 200px;
   }
 
   /* 오른쪽 중앙 */
   .sticker-6 {
-    top: 20%;
-    right: 28%;
-    width: 140px;
+    top: 15%;
+    right: 25%;
+    width: 200px;
+    height: 200px;
   }
 
   /* 오른쪽 영역 */
   .sticker-7 {
-    top: 25%;
-    right: 15%;
-    width: 180px;
+    top: 30%;
+    right: 10%;
+    width: 330px;
+    height: 330px;
   }
 
   .sticker-8 {
-    top: 40%;
-    right: 23%;
-    width: 120px;
+    top: 50%;
+    right: 20%;
+    width: 250px;
+    height: 250px;
+  }
+
+  /* ---------------------------- Works 섹션 ---------------------------- */
+
+  /* 프로젝트 정보 */
+  /* 워크 섹션에 들어가는 텍스트 전체 설정 */
+  .project-info {
+    gap: 30px;
+    padding: 0 20px 0;
   }
 }
 /* ***************************************************************** */
@@ -219,6 +396,12 @@
     gap: 5px;
   }
 
+  .more-img-9,
+  .more-img-10,
+  .more-img-11,
+  .more-img-12,
+  .more-img-13,
+  .more-img-14,
   .more-img-15 {
     display: none;
   }
@@ -287,6 +470,12 @@
     gap: 5px;
   }
 
+  .more-img-9,
+  .more-img-10,
+  .more-img-11,
+  .more-img-12,
+  .more-img-13,
+  .more-img-14,
   .more-img-15 {
     display: none;
   }
@@ -377,6 +566,12 @@
     gap: 5px;
   }
 
+  .more-img-9,
+  .more-img-10,
+  .more-img-11,
+  .more-img-12,
+  .more-img-13,
+  .more-img-14,
   .more-img-15 {
     display: none;
   }
