@@ -457,9 +457,11 @@ body {
   color: #ffffff;
   text-align: center;
 }
-.more-click {
+
+.more-click a {
   text-decoration: none;
 }
+
 .more-click p {
   animation: bounce 2s infinite;
   font-size: 16px;
@@ -469,7 +471,7 @@ body {
   text-align: center;
   letter-spacing: 1px;
   color: #ffffff;
-  /* 링크 클릭 라인 제거 */
+
 }
 
 /* 모얼 클릭 애니메이션 */
