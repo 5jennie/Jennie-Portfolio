@@ -1,3 +1,41 @@
+/* ************************ header 불러오기 ************************* */
+fetch("./inc/header.html")
+  .then((response) => response.text())
+  .then((data) => {
+    document.getElementById("nav").innerHTML = data;
+
+    // 부드러운 스크롤 효과
+    document.querySelectorAll('.nav a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) {
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      });
+    });
+
+    const cursor = document.querySelector(".custom-cursor");
+    document.querySelectorAll(".nav a").forEach((element) => {
+      element.addEventListener("mouseenter", () =>
+        cursor.classList.add("active")
+      );
+      element.addEventListener("mouseleave", () =>
+        cursor.classList.remove("active")
+      );
+    });
+  });
+
+/* ************************ footer 불러오기 ************************* */
+fetch("./inc/footer.html")
+  .then((response) => response.text())
+  .then((data) => {
+    document.getElementById("footer").innerHTML = data;
+  });
+
 /* ************************ 반응 셋팅 ************************* */
 
 // 페이지 로드 시 최상단으로 이동
