@@ -62,6 +62,62 @@
       "image": "./img/works/works (8).jpg",
       "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
       "tag": "BRANDING<br />1920*"
+    },
+    {
+      "id": 10,
+      "category": "branding",
+      "image": "./img/works/works (9).jpg",
+      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
+      "tag": "BRANDING<br />1920*"
+    },
+    {
+      "id": 11,
+      "category": "promotions",
+      "image": "./img/works/works (10).jpg",
+      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
+      "tag": "promotions<br />1920*"
+    },
+    {
+      "id": 12,
+      "category": "promotions",
+      "image": "./img/works/works (11).jpg",
+      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
+      "tag": "promotions<br />1920*"
+    },
+    {
+      "id": 13,
+      "category": "web",
+      "image": "./img/works/works (12).jpg",
+      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
+      "tag": "web<br />1920*"
+    },
+    {
+      "id": 14,
+      "category": "promotions",
+      "image": "./img/works/works (13).jpg",
+      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
+      "tag": "promotions<br />1920*"
+    },
+    {
+      "id": 15,
+      "category": "promotions",
+      "image": "./img/works/works (14).jpg",
+      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
+      "tag": "promotions<br />1920*"
+    },
+    {
+      "id": 16,
+      "category": "web",
+      "image": "./img/works/works (15).jpg",
+      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
+      "tag": "web<br />1920*"
+    },
+    {
+      "id": 17,
+      "category": "web",
+      "image": "./img/works/works (16).jpg",
+      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
+      "tag": "web<br />1920*"
     }
   ]
 }

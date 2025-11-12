@@ -1,3 +1,5 @@
+// 기본 셋팅 파일
+
 // ************************ header 불러오기 *************************
 fetch("./inc/header.html")
   .then((response) => response.text())
@@ -196,32 +198,7 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 
 // ************************************************************
-// ********************* 스크롤 애니메이션 *********************
 
-// Intersection Observer 옵션 설정
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -100px 0px",
-};
-
-// 요소가 화면에 보이면 'visible' 클래스 추가
-const observer = new IntersectionObserver(function (entries) {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    }
-  });
-}, observerOptions);
-
-// Works 섹션 관찰 시작
-document.addEventListener("DOMContentLoaded", function () {
-  const worksSection = document.querySelector(".works-section");
-  if (worksSection) {
-    observer.observe(worksSection);
-  }
-});
-
-// ************************************************************
 // *************** 스티커 패럴랙스 & 드래그 효과 ***************
 
 // 스티커 패럴랙스 효과
@@ -335,7 +312,73 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+// ************************************************************
+// ********************* 스크롤 애니메이션 *********************
 
+// Intersection Observer 옵션 설정
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: "0px 0px -100px 0px",
+};
+
+// 요소가 화면에 보이면 'visible' 클래스 추가
+const observer = new IntersectionObserver(function (entries) {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    }
+  });
+}, observerOptions);
+
+// Works 섹션 관찰 시작
+document.addEventListener("DOMContentLoaded", function () {
+  const worksSection = document.querySelector(".works-section");
+  if (worksSection) {
+    observer.observe(worksSection);
+  }
+});
+
+// ************************************************************
+// ************** 메인 페이지 프로젝트 클릭 이벤트 **************
+
+function setupMainPageProjectLinks() {
+  const mainProjects = document.querySelectorAll(
+    ".works-section .project-item"
+  );
+
+  if (mainProjects.length === 0) return; // 메인 페이지가 아니면 실행 안함
+
+  mainProjects.forEach((project, index) => {
+    // 커서 스타일 추가
+    project.style.cursor = "pointer";
+
+    // 프로젝트 ID 부여 (1부터 시작)
+    const projectId = index + 1;
+    project.dataset.projectId = projectId;
+
+    // 클릭 이벤트 추가
+    project.addEventListener("click", function () {
+      window.location.href = `detail-page.html?id=${projectId}`;
+    });
+
+    // 호버 효과 추가 (선택사항)
+    project.addEventListener("mouseenter", function () {
+      this.style.opacity = "0.8";
+      this.style.transition = "opacity 0.3s ease";
+    });
+
+    project.addEventListener("mouseleave", function () {
+      this.style.opacity = "1";
+    });
+  });
+}
+
+// 페이지 로드 시 실행 (기존 DOMContentLoaded에 추가)
+document.addEventListener("DOMContentLoaded", function () {
+  setupMainPageProjectLinks(); 
+});
+
+// ************************************************************
 // ******************* Works 섹션 애니메이션 *******************
 
 // Intersection Observer로 프로젝트 아이템 애니메이션
@@ -591,55 +634,54 @@ document.addEventListener("DOMContentLoaded", function () {
 // ************************************************************
 
 // ******************* Works 서브 페이지 기능 *******************
-// 카테고리 필터링
-const tabButtons = document.querySelectorAll(".tab-btn");
-const projectCards = document.querySelectorAll(".project-card");
 
-tabButtons.forEach((button) => {
-  button.addEventListener("click", function () {
-    const category = this.getAttribute("data-category");
-
-    // 활성 탭 스타일 변경
-    tabButtons.forEach((btn) => btn.classList.remove("active"));
-    this.classList.add("active");
-
-    // 프로젝트 카드 필터링
-    projectCards.forEach((card) => {
-      const cardCategory = card.getAttribute("data-category");
-
-      if (category === "all") {
-        card.classList.remove("hidden");
-      } else if (cardCategory === category) {
-        card.classList.remove("hidden");
-      } else {
-        card.classList.add("hidden");
-      }
-    });
-  });
-});
+// 페이지네이션 전역 변수
+let allProjects = [];
+let currentPage = 1;
+const itemsPerPage = 9;
+let currentCategory = "all";
 
 // 프로젝트 데이터 로드
 async function loadProjects() {
   try {
     const response = await fetch("./data/projects.json");
     const data = await response.json();
-    renderProjects(data.projects);
+    allProjects = data.projects; /* ★수정됨: 전역 변수에 저장 */
+    renderProjects();
+    setupCategoryFilter();
+    setupPagination(); /* ★추가됨: 페이지네이션 설정 */
   } catch (error) {
     console.error("프로젝트 데이터 로드 실패:", error);
   }
 }
 
-// 프로젝트 카드 HTML 생성
-function renderProjects(projects) {
+// 현재 페이지와 카테고리에 맞는 프로젝트만 렌더링
+function renderProjects() {
   const grid = document.querySelector(".projects-grid");
   if (!grid) return;
 
   grid.innerHTML = "";
 
-  projects.forEach((project) => {
+  // 카테고리 필터링
+  const filteredProjects =
+    currentCategory === "all"
+      ? allProjects
+      : allProjects.filter((project) => project.category === currentCategory);
+
+  // 페이지네이션 계산
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const projectsToShow = filteredProjects.slice(startIndex, endIndex);
+
+  // 카드 렌더링
+  projectsToShow.forEach((project) => {
     const card = document.createElement("div");
     card.className = "project-card";
     card.dataset.category = project.category;
+    // 프로젝트 ID 저장
+    card.dataset.projectId = project.id;
+    // 커서 포인터 표시
+    card.style.cursor = "pointer";
 
     card.innerHTML = `
       <div class="project-image">
@@ -651,17 +693,21 @@ function renderProjects(projects) {
       </div>
     `;
 
+    // 카드 클릭 이벤트 - 디테일 페이지로 이동
+    card.addEventListener("click", function () {
+      window.location.href = `detail-page.html?id=${project.id}`;
+    });
+
     grid.appendChild(card);
   });
 
-  // 카드 생성 후 필터링 이벤트 다시 연결
-  setupCategoryFilter();
+  // 페이지네이션 버튼 표시/숨김
+  updatePaginationVisibility(filteredProjects.length);
 }
 
 // 카테고리 필터 설정
 function setupCategoryFilter() {
   const tabButtons = document.querySelectorAll(".tab-btn");
-  const projectCards = document.querySelectorAll(".project-card");
 
   tabButtons.forEach((button) => {
     button.addEventListener("click", function () {
@@ -671,37 +717,78 @@ function setupCategoryFilter() {
       tabButtons.forEach((btn) => btn.classList.remove("active"));
       this.classList.add("active");
 
-      // 프로젝트 카드 필터링
-      projectCards.forEach((card) => {
-        const cardCategory = card.getAttribute("data-category");
-
-        if (category === "all") {
-          card.classList.remove("hidden");
-        } else if (cardCategory === category) {
-          card.classList.remove("hidden");
-        } else {
-          card.classList.add("hidden");
-        }
-      });
+      // 카테고리 변경 시 페이지 1로 리셋
+      currentCategory = category;
+      currentPage = 1;
+      renderProjects();
     });
   });
 }
 
-// 페이지 네이션
-const prevBtn = document.querySelector(".pagination-btn.prev");
-const nextBtn = document.querySelector(".pagination-btn.next");
+// 페이지네이션 버튼 설정
+function setupPagination() {
+  const prevBtn = document.querySelector(".pagination-btn.prev");
+  const nextBtn = document.querySelector(".pagination-btn.next");
 
-if (prevBtn) {
-  prevBtn.addEventListener("click", function () {
-    console.log("이전 페이지");
-    // 페이지네이션 로직 추가 예정
-  });
+  if (prevBtn) {
+    prevBtn.addEventListener("click", function () {
+      // 현재 카테고리의 전체 프로젝트 수 계산
+      const filteredProjects =
+        currentCategory === "all"
+          ? allProjects
+          : allProjects.filter(
+              (project) => project.category === currentCategory
+            );
+
+      if (currentPage > 1) {
+        currentPage--;
+        renderProjects();
+        // 페이지 상단으로 스크롤
+        scrollToTop();
+      }
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", function () {
+      // 현재 카테고리의 전체 프로젝트 수 계산
+      const filteredProjects =
+        currentCategory === "all"
+          ? allProjects
+          : allProjects.filter(
+              (project) => project.category === currentCategory
+            );
+
+      const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
+
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderProjects();
+        // 페이지 상단으로 스크롤
+        scrollToTop();
+      }
+    });
+  }
 }
 
-if (nextBtn) {
-  nextBtn.addEventListener("click", function () {
-    console.log("다음 페이지");
-    // 페이지네이션 로직 추가 예정
+// 페이지네이션 버튼 표시/숨김
+function updatePaginationVisibility(totalItems) {
+  const pagination = document.querySelector(".pagination");
+  if (!pagination) return;
+
+  // 9개 이하면 페이지네이션 숨김
+  if (totalItems <= itemsPerPage) {
+    pagination.style.display = "none";
+  } else {
+    pagination.style.display = "flex";
+  }
+}
+
+// 페이지 상단으로 부드럽게 스크롤
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
   });
 }
 
