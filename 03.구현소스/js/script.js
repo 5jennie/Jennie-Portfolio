@@ -4,8 +4,28 @@ fetch("./inc/header.html")
   .then((data) => {
     document.getElementById("nav").innerHTML = data;
 
+    // 현재 페이지가 서브 페이지 인지 확인하기
+    const isSubPage =
+      !window.location.pathname.includes("index.html") &&
+      window.location.pathname !== "/" &&
+      window.location.pathname.endsWith(".html");
+
+    // Home 링크 설정
+    const homeLink = document.querySelector('.nav a[href="#main"]');
+    if (homeLink && isSubPage) {
+      // 서브페이지에서는 index.html로 이동
+      homeLink.href = "./index.html";
+      homeLink.removeAttribute("data-scroll"); // 스크롤 속성 제거
+    }
+
     // 부드러운 스크롤 효과
     document.querySelectorAll('.nav a[href^="#"]').forEach((anchor) => {
+      // 서브페이지에서 ./index.html로 변경된 링크는 제외
+      // 페이지 이동 링크는 preventDefault 하지 않음
+      if (anchor.getAttribute("href").startsWith("./")) {
+        return;
+      }
+
       anchor.addEventListener("click", function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute("href"));
@@ -55,75 +75,79 @@ document.documentElement.style.scrollBehavior = "smooth";
 
 // ************************ gif 설정 ************************ //
 /* 메인에 gif 이미지 가져오기 */
-const canvas = document.getElementById("je-gif");
-const ctx = canvas.getContext("2d");
+document.addEventListener("DOMContentLoaded", function () {
+  const canvas = document.getElementById("je-gif");
+  if (!canvas) return;
 
-// 애니메이션 프레임 설정
-// 총 프레임 수
-const totalFrames = 20;
-// 프레임 배열과 현재 프레임 인덱스
-const frames = [];
-// 현재 표시 중인 프레임 번호
-let currentFrame = 0;
-// 애니메이션 재생 상태
-let isPlaying = true;
-// 로드된 이미지 개수
-let imagesLoaded = 0;
-// 마지막 프레임 표시 시간
-let lastFrameTime = 0;
-// 프레임 간 딜레이 (약 0초)
-const frameDelay = 1000 / 6;
+  const ctx = canvas.getContext("2d");
 
-/* gif캔버스 크기 설정 */
-canvas.width = 400;
-canvas.height = 400;
+  // 애니메이션 프레임 설정
+  // 총 프레임 수
+  const totalFrames = 20;
+  // 프레임 배열과 현재 프레임 인덱스
+  const frames = [];
+  // 현재 표시 중인 프레임 번호
+  let currentFrame = 0;
+  // 애니메이션 재생 상태
+  let isPlaying = true;
+  // 로드된 이미지 개수
+  let imagesLoaded = 0;
+  // 마지막 프레임 표시 시간
+  let lastFrameTime = 0;
+  // 프레임 간 딜레이 (약 0초)
+  const frameDelay = 1000 / 6;
 
-/* 모든 프레임 이미지 미리 로드 */
-for (let i = 1; i <= totalFrames; i++) {
-  const img = new Image();
-  // 이미지 로드 완료 시 카운트 증가
-  img.src = `./img/animation/144ppi/je_ani_${i}.png`;
-  img.onload = function () {
-    imagesLoaded++;
-    // 모든 이미지가 로드되면 애니메이션 시작
-    if (imagesLoaded === totalFrames) {
-      animate(0);
-    }
-  };
-  frames.push(img);
-}
+  /* gif캔버스 크기 설정 */
+  canvas.width = 400;
+  canvas.height = 400;
 
-// 애니메이션 재생 함수
-function animate(timestamp) {
-  // 재생이 멈춘 상태면 중단
-  if (!isPlaying) return;
-
-  // 프레임 딜레이만큼 시간이 지나면 다음 프레임으로
-  if (timestamp - lastFrameTime >= frameDelay) {
-    // 이전 프레임 지우기
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    // 현재 프레임 그리기
-    ctx.drawImage(frames[currentFrame], 0, 0, canvas.width, canvas.height);
-
-    // 다음 프레임으로 이동 (마지막 프레임이면 처음으로)
-    currentFrame = (currentFrame + 1) % totalFrames;
-    lastFrameTime = timestamp;
+  /* 모든 프레임 이미지 미리 로드 */
+  for (let i = 1; i <= totalFrames; i++) {
+    const img = new Image();
+    // 이미지 로드 완료 시 카운트 증가
+    img.src = `./img/animation/144ppi/je_ani_${i}.png`;
+    img.onload = function () {
+      imagesLoaded++;
+      // 모든 이미지가 로드되면 애니메이션 시작
+      if (imagesLoaded === totalFrames) {
+        animate(0);
+      }
+    };
+    frames.push(img);
   }
 
-  // 다음 프레임 요청
-  requestAnimationFrame(animate);
-}
+  // 애니메이션 재생 함수
+  function animate(timestamp) {
+    // 재생이 멈춘 상태면 중단
+    if (!isPlaying) return;
 
-// 마우스가 캔버스에 올라가면 애니메이션 일시정지
-canvas.addEventListener("mouseenter", function () {
-  isPlaying = false;
-});
+    // 프레임 딜레이만큼 시간이 지나면 다음 프레임으로
+    if (timestamp - lastFrameTime >= frameDelay) {
+      // 이전 프레임 지우기
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // 현재 프레임 그리기
+      ctx.drawImage(frames[currentFrame], 0, 0, canvas.width, canvas.height);
 
-// 마우스가 캔버스에서 벗어나면 애니메이션 재개
-canvas.addEventListener("mouseleave", function () {
-  isPlaying = true;
-  lastFrameTime = 0;
-  requestAnimationFrame(animate);
+      // 다음 프레임으로 이동 (마지막 프레임이면 처음으로)
+      currentFrame = (currentFrame + 1) % totalFrames;
+      lastFrameTime = timestamp;
+    }
+
+    // 다음 프레임 요청
+    requestAnimationFrame(animate);
+  }
+
+  // 마우스가 캔버스에 올라가면 애니메이션 일시정지
+  canvas.addEventListener("mouseenter", function () {
+    isPlaying = false;
+  });
+
+  // 마우스가 캔버스에서 벗어나면 애니메이션 재개
+  canvas.addEventListener("mouseleave", function () {
+    isPlaying = true;
+    lastFrameTime = 0;
+    requestAnimationFrame(animate);
+  });
 });
 
 // ************************************************************ //
@@ -561,5 +585,54 @@ document.addEventListener("DOMContentLoaded", function () {
     moreObserver.observe(moreContainer);
   }
 });
+
+// ************************************************************ //
+
+// ******************* Works 서브 페이지 기능 ******************* //
+
+/* ========== 카테고리 필터링 ========== */
+const tabButtons = document.querySelectorAll(".tab-btn");
+const projectCards = document.querySelectorAll(".project-card");
+
+tabButtons.forEach((button) => {
+  button.addEventListener("click", function () {
+    const category = this.getAttribute("data-category");
+
+    // 활성 탭 스타일 변경
+    tabButtons.forEach((btn) => btn.classList.remove("active"));
+    this.classList.add("active");
+
+    // 프로젝트 카드 필터링
+    projectCards.forEach((card) => {
+      const cardCategory = card.getAttribute("data-category");
+
+      if (category === "all") {
+        card.classList.remove("hidden");
+      } else if (cardCategory === category) {
+        card.classList.remove("hidden");
+      } else {
+        card.classList.add("hidden");
+      }
+    });
+  });
+});
+
+/* ========== 페이지네이션 ========== */
+const prevBtn = document.querySelector(".pagination-btn.prev");
+const nextBtn = document.querySelector(".pagination-btn.next");
+
+if (prevBtn) {
+  prevBtn.addEventListener("click", function () {
+    console.log("이전 페이지");
+    // 페이지네이션 로직 추가 예정
+  });
+}
+
+if (nextBtn) {
+  nextBtn.addEventListener("click", function () {
+    console.log("다음 페이지");
+    // 페이지네이션 로직 추가 예정
+  });
+}
 
 // ************************************************************ //
