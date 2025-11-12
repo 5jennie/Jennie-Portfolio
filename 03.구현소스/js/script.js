@@ -1,4 +1,4 @@
-/* ************************ header 불러오기 ************************* */
+// ************************ header 불러오기 *************************
 fetch("./inc/header.html")
   .then((response) => response.text())
   .then((data) => {
@@ -49,14 +49,15 @@ fetch("./inc/header.html")
     });
   });
 
-/* ************************ footer 불러오기 ************************* */
+// ************************ footer 불러오기 *************************
+
 fetch("./inc/footer.html")
   .then((response) => response.text())
   .then((data) => {
     document.getElementById("footer").innerHTML = data;
   });
 
-/* ************************ 반응 셋팅 ************************* */
+// ************************ 반응 셋팅 *************************
 
 // 페이지 로드 시 최상단으로 이동
 window.onbeforeunload = function () {
@@ -71,10 +72,10 @@ if (history.scrollRestoration) {
 // 부드러운 스크롤 기능
 document.documentElement.style.scrollBehavior = "smooth";
 
-/* ***************************************************************** */
+// *****************************************************************
 
-// ************************ gif 설정 ************************ //
-/* 메인에 gif 이미지 가져오기 */
+// ************************ gif 설정 ************************
+// 메인에 gif 이미지 가져오기
 document.addEventListener("DOMContentLoaded", function () {
   const canvas = document.getElementById("je-gif");
   if (!canvas) return;
@@ -97,11 +98,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // 프레임 간 딜레이 (약 0초)
   const frameDelay = 1000 / 6;
 
-  /* gif캔버스 크기 설정 */
+  // gif캔버스 크기 설정
   canvas.width = 400;
   canvas.height = 400;
 
-  /* 모든 프레임 이미지 미리 로드 */
+  // 모든 프레임 이미지 미리 로드
   for (let i = 1; i <= totalFrames; i++) {
     const img = new Image();
     // 이미지 로드 완료 시 카운트 증가
@@ -150,9 +151,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// ************************************************************ //
+// ************************************************************
 
-// ******************** 마우스 커서 커스텀 ******************** //
+// ******************** 마우스 커서 커스텀 ********************
 window.addEventListener("DOMContentLoaded", function () {
   const cursor = document.querySelector(".custom-cursor");
 
@@ -194,8 +195,8 @@ window.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// ************************************************************ //
-// ********************* 스크롤 애니메이션 ********************* //
+// ************************************************************
+// ********************* 스크롤 애니메이션 *********************
 
 // Intersection Observer 옵션 설정
 const observerOptions = {
@@ -220,29 +221,29 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// ************************************************************ //
-// *************** 스티커 패럴랙스 & 드래그 효과 *************** //
+// ************************************************************
+// *************** 스티커 패럴랙스 & 드래그 효과 ***************
 
-/* 스티커 패럴랙스 효과 */
+// 스티커 패럴랙스 효과
 document.addEventListener("DOMContentLoaded", function () {
   const stickers = document.querySelectorAll(".sticker");
 
-  /* 드래그 관련 변수 */
+  // 드래그 관련 변수
   let isDragging = false; // 드래그 중인지 확인
   let currentSticker = null; // 현재 드래그 중인 스티커
   let offsetX = 0; // 스티커 내 클릭 위치 X
   let offsetY = 0; // 스티커 내 클릭 위치 Y
 
   if (stickers.length > 0) {
-    /* 마우스 이동에 따른 패럴랙스 효과 */
+    // 마우스 이동에 따른 패럴랙스 효과
     document.addEventListener("mousemove", function (e) {
-      /* 드래그 중일 때는 드래그 처리 */
+      // 드래그 중일 때는 드래그 처리
       if (isDragging && currentSticker) {
-        /* 마우스 위치에서 오프셋을 빼서 스티커 위치 계산 */
+        // 마우스 위치에서 오프셋을 빼서 스티커 위치 계산
         const newLeft = e.clientX - offsetX;
         const newTop = e.clientY - offsetY;
 
-        /* 스티커를 absolute 위치로 변경하여 자유롭게 이동 */
+        // 스티커를 absolute 위치로 변경하여 자유롭게 이동
         currentSticker.style.left = newLeft + "px";
         currentSticker.style.top = newTop + "px";
         currentSticker.style.transform = "none"; // 패럴랙스 효과 제거
@@ -250,63 +251,63 @@ document.addEventListener("DOMContentLoaded", function () {
         return; // 드래그 중에는 패럴랙스 효과 비활성화
       }
 
-      /* 드래그 중이 아닐 때만 패럴랙스 효과 적용 */
-      /* 마우스 위치를 0~1 사이 값으로 정규화 */
+      // 드래그 중이 아닐 때만 패럴랙스 효과 적용
+      // 마우스 위치를 0~1 사이 값으로 정규화
       const mouseX = e.clientX / window.innerWidth;
       const mouseY = e.clientY / window.innerHeight;
 
-      /* 각 스티커에 패럴랙스 효과 적용 */
+      // 각 스티커에 패럴랙스 효과 적용
       stickers.forEach((sticker) => {
-        /* 드래그로 이동한 스티커는 패럴랙스 효과 제외 */
+        // 드래그로 이동한 스티커는 패럴랙스 효과 제외
         if (sticker.dataset.dragged === "true") return;
 
-        /* 각 스티커의 이동 속도 가져오기 */
+        // 각 스티커의 이동 속도 가져오기
         const speed = parseFloat(sticker.getAttribute("data-speed")) || 0.5;
 
-        /* 마우스 반대 방향으로 이동 거리 계산 (패럴랙스 효과) */
+        // 마우스 반대 방향으로 이동 거리 계산 (패럴랙스 효과)
         const moveX = (mouseX - 0.5) * -50 * speed;
         const moveY = (mouseY - 0.5) * -50 * speed;
 
-        /* transform 속성으로 스티커 위치 이동 */
+        // transform 속성으로 스티커 위치 이동
         sticker.style.transform = `translate(${moveX}px, ${moveY}px)`;
       });
     });
 
-    /* 스티커에 드래그 기능 추가 */
+    // 스티커에 드래그 기능 추가
     stickers.forEach((sticker) => {
-      /* 마우스 클릭 시작 (드래그 시작) */
+      // 마우스 클릭 시작 (드래그 시작)
       sticker.addEventListener("mousedown", function (e) {
         isDragging = true;
         currentSticker = sticker;
 
-        /* 스티커 내에서 클릭한 위치 계산 */
+        // 스티커 내에서 클릭한 위치 계산
         const rect = sticker.getBoundingClientRect();
         offsetX = e.clientX - rect.left;
         offsetY = e.clientY - rect.top;
 
-        /* 드래그 중임을 표시 */
+        // 드래그 중임을 표시
         sticker.style.cursor = "grabbing";
         sticker.style.zIndex = "5"; // 다른 스티커 위로
 
-        /* 드래그 중에는 패럴랙스 효과 비활성화 */
+        // 드래그 중에는 패럴랙스 효과 비활성화
         sticker.dataset.dragged = "true";
 
         e.preventDefault(); // 기본 드래그 동작 방지
       });
 
-      /* 스티커에 마우스 올리면 커스텀 커서 활성화 */
+      // 스티커에 마우스 올리면 커스텀 커서 활성화
       sticker.addEventListener("mouseenter", function () {
         const cursor = document.querySelector(".custom-cursor");
         if (cursor) {
           cursor.classList.add("active");
         }
-        /* 드래그 가능함을 나타내는 커서 */
+        // 드래그 가능함을 나타내는 커서
         if (!isDragging) {
           sticker.style.cursor = "grab";
         }
       });
 
-      /* 스티커에서 마우스 벗어나면 커스텀 커서 원래대로 */
+      // 스티커에서 마우스 벗어나면 커스텀 커서 원래대로
       sticker.addEventListener("mouseleave", function () {
         const cursor = document.querySelector(".custom-cursor");
         if (cursor) {
@@ -315,7 +316,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
-    /* 마우스 버튼을 놓으면 드래그 종료 */
+    // 마우스 버튼을 놓으면 드래그 종료
     document.addEventListener("mouseup", function () {
       if (isDragging && currentSticker) {
         isDragging = false;
@@ -324,7 +325,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    /* 마우스가 화면 밖으로 나가도 드래그 종료 */
+    // 마우스가 화면 밖으로 나가도 드래그 종료
     document.addEventListener("mouseleave", function () {
       if (isDragging && currentSticker) {
         isDragging = false;
@@ -335,9 +336,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// ******************* Works 섹션 애니메이션 ******************* //
+// ******************* Works 섹션 애니메이션 *******************
 
-/* Intersection Observer로 프로젝트 아이템 애니메이션 */
+// Intersection Observer로 프로젝트 아이템 애니메이션
 const projectObserverOptions = {
   threshold: 0.2,
   rootMargin: "0px 0px -50px 0px",
@@ -351,7 +352,7 @@ const projectObserver = new IntersectionObserver(function (entries) {
   });
 }, projectObserverOptions);
 
-/* 페이지 로드 시 프로젝트 아이템 관찰 */
+// 페이지 로드 시 프로젝트 아이템 관찰
 document.addEventListener("DOMContentLoaded", function () {
   const projectItems = document.querySelectorAll(".project-item");
   projectItems.forEach((item) => {
@@ -359,10 +360,10 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// ************************************************************ //
+// ************************************************************
 
-// *************** 프로젝트 이미지 랜덤 크기 생성 *************** //
-/* 이미지 원본 비율을 자동으로 계산하여 크기 조정 */
+// *************** 프로젝트 이미지 랜덤 크기 생성 ***************
+// 이미지 원본 비율을 자동으로 계산하여 크기 조정
 document.addEventListener("DOMContentLoaded", function () {
   // 프로젝트별 설정
   const projects = [
@@ -413,7 +414,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   ];
 
-  /* 이미지 원본 크기를 가져와서 비율 계산하는 함수 */
+  // 이미지 원본 크기를 가져와서 비율 계산하는 함수
   function loadImageWithRatio(imagePath, minWidth, maxWidth) {
     return new Promise((resolve) => {
       const img = new Image();
@@ -421,7 +422,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const aspectRatio = this.naturalHeight / this.naturalWidth;
         const isHorizontal = this.naturalWidth >= this.naturalHeight;
 
-        /* 가로형 이미지: maxWidth 기준, 세로형 이미지: minWidth 기준 */
+        // 가로형 이미지: maxWidth 기준, 세로형 이미지: minWidth 기준
         let targetWidth;
         if (isHorizontal) {
           // 가로형: maxWidth 기준으로 랜덤 생성 (maxWidth의 80~100%)
@@ -443,28 +444,28 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  /* 각 프로젝트의 이미지를 원본 비율로 생성 */
+  // 각 프로젝트의 이미지를 원본 비율로 생성
   projects.forEach(async (project) => {
     const container = document.querySelector(project.container);
     if (!container) return;
 
     const imagePromises = [];
 
-    /* 이미지 생성 (2세트 - 무한 루프용) */
+    // 이미지 생성 (2세트 - 무한 루프용)
     for (let set = 0; set < 2; set++) {
       for (let i = 0; i < project.count; i++) {
-        // /* 이미지 배열에서 순환하여 선택 */
+        // 이미지 배열에서 순환하여 선택
         const imageIndex = i % project.images.length;
         const imagePath = project.images[imageIndex];
 
-        /* minWidth, maxWidth를 함수에 전달하여 이미지 비율에 따라 처리 */
+        // minWidth, maxWidth를 함수에 전달하여 이미지 비율에 따라 처리
         imagePromises.push(
           loadImageWithRatio(imagePath, project.minWidth, project.maxWidth)
         );
       }
     }
 
-    /* 모든 이미지 정보를 가져온 후 HTML 생성 */
+    // 모든 이미지 정보를 가져온 후 HTML 생성
     const imageData = await Promise.all(imagePromises);
 
     let htmlCode = "";
@@ -480,10 +481,11 @@ document.addEventListener("DOMContentLoaded", function () {
       `;
     });
 
-    /* HTML에 삽입 */
+    // HTML에 삽입
     container.innerHTML = htmlCode;
-    /* 드래그로 슬라이더 이동 */
-    const wrapper = container.parentElement; // 스크롤 가능한 부모 (.project-slider-container)
+    // 드래그로 슬라이더 이동
+    // 스크롤 가능한 부모 (.project-slider-container)
+    const wrapper = container.parentElement;
     let isDown = false;
     let startX;
     let scrollLeft;
@@ -560,11 +562,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
-/* ***************************************************************** */
+// ************************************************************
 
-// ******************* more 섹션 애니메이션 ******************* //
+// ******************* more 섹션 애니메이션 *******************
 
-/* Intersection Observer로 more 섹션 애니메이션 */
+// Intersection Observer로 more 섹션 애니메이션
 const moreObserverOptions = {
   threshold: 0.2,
   rootMargin: "0px 0px -50px 0px",
@@ -578,7 +580,7 @@ const moreObserver = new IntersectionObserver(function (entries) {
   });
 }, moreObserverOptions);
 
-/* 페이지 로드 시 more 컨테이너 관찰 */
+// 페이지 로드 시 more 컨테이너 관찰
 document.addEventListener("DOMContentLoaded", function () {
   const moreContainer = document.querySelector(".more-container");
   if (moreContainer) {
@@ -586,11 +588,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// ************************************************************ //
+// ************************************************************
 
-// ******************* Works 서브 페이지 기능 ******************* //
-
-/* ========== 카테고리 필터링 ========== */
+// ******************* Works 서브 페이지 기능 *******************
+// 카테고리 필터링
 const tabButtons = document.querySelectorAll(".tab-btn");
 const projectCards = document.querySelectorAll(".project-card");
 
@@ -617,7 +618,76 @@ tabButtons.forEach((button) => {
   });
 });
 
-/* ========== 페이지네이션 ========== */
+// 프로젝트 데이터 로드
+async function loadProjects() {
+  try {
+    const response = await fetch("./data/projects.json");
+    const data = await response.json();
+    renderProjects(data.projects);
+  } catch (error) {
+    console.error("프로젝트 데이터 로드 실패:", error);
+  }
+}
+
+// 프로젝트 카드 HTML 생성
+function renderProjects(projects) {
+  const grid = document.querySelector(".projects-grid");
+  if (!grid) return;
+
+  grid.innerHTML = "";
+
+  projects.forEach((project) => {
+    const card = document.createElement("div");
+    card.className = "project-card";
+    card.dataset.category = project.category;
+
+    card.innerHTML = `
+      <div class="project-image">
+        <img src="${project.image}" alt="Project ${project.id}" />
+      </div>
+      <div class="project-info">
+        <p class="project-description">${project.description}</p>
+        <span class="project-tag">${project.tag}</span>
+      </div>
+    `;
+
+    grid.appendChild(card);
+  });
+
+  // 카드 생성 후 필터링 이벤트 다시 연결
+  setupCategoryFilter();
+}
+
+// 카테고리 필터 설정
+function setupCategoryFilter() {
+  const tabButtons = document.querySelectorAll(".tab-btn");
+  const projectCards = document.querySelectorAll(".project-card");
+
+  tabButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const category = this.getAttribute("data-category");
+
+      // 활성 탭 스타일 변경
+      tabButtons.forEach((btn) => btn.classList.remove("active"));
+      this.classList.add("active");
+
+      // 프로젝트 카드 필터링
+      projectCards.forEach((card) => {
+        const cardCategory = card.getAttribute("data-category");
+
+        if (category === "all") {
+          card.classList.remove("hidden");
+        } else if (cardCategory === category) {
+          card.classList.remove("hidden");
+        } else {
+          card.classList.add("hidden");
+        }
+      });
+    });
+  });
+}
+
+// 페이지 네이션
 const prevBtn = document.querySelector(".pagination-btn.prev");
 const nextBtn = document.querySelector(".pagination-btn.next");
 
@@ -635,4 +705,7 @@ if (nextBtn) {
   });
 }
 
-// ************************************************************ //
+// Works 페이지에서만 데이터 로드 실행
+if (document.querySelector(".projects-grid")) {
+  document.addEventListener("DOMContentLoaded", loadProjects);
+}
