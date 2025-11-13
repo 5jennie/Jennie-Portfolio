@@ -1,11 +1,25 @@
 @charset "UTF-8";
 /* ================================================================ */
-/* 포트폴리오 사이트 - 서브 페이지 미디어 쿼리 (media-works.css) */
+/* 포트폴리오 사이트 - 디테일 페이지 미디어 쿼리 (media-detail.css) */
 /* ================================================================ */
 
 /* ***************************************************************** */
 /* PC 작은 사이즈 (max-width: 1400px) */
 @media screen and (max-width: 1400px) {
+  /* back-click */
+  .back-click {
+    top: 13%;
+  }
+
+  /* detail-img */
+  .detail-img-m {
+    margin: 100px 140px 20px;
+  }
+
+  /* detail-img-sb */
+  .detail-img-sb {
+    margin: 0px 140px;
+  }
 }
 
 /* ***************************************************************** */
@@ -37,42 +51,46 @@
   .custom-cursor {
     display: none !important;
   }
-
-  /* ---------------------------- Works 섹션 ---------------------------- */
-  /* 카테고리 탭 섹션 */
-  .category-tabs {
-    margin-bottom: 40px;
-  }
-
-  /* 이미지 2열로 정렬 */
-  .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 /* ***************************************************************** */
 
 /* ***************************************************************** */
 /* 태블릿 세로 모드 및 모바일 (max-width: 768px) 아이패드 미니 */
 @media screen and (max-width: 768px) {
+  /* back-click */
+  .back-click p {
+    width: 35px;
+    height: 35px;
+  }
+
+  /* detail-img */
+  .detail-img-m {
+    margin: 100px 120px 20px;
+  }
+
+  /* detail-img-sb */
+  .detail-img-sb {
+    margin: 0px 120px;
+  }
 }
 /* ***************************************************************** */
 
 /* ***************************************************************** */
 /* 모바일 작은 사이즈 (max-width: 430px) 아이폰 14프로맥스 */
 @media screen and (max-width: 430px) {
-  /* Works 섹션 */
-  .works-main {
-    padding: 120px 30px;
-  }
-
-  /* 이미지 1열로 정렬 */
-  .projects-grid {
-    display: block;
-  }
-
-  /* 이미지 하단 텍스트 */
-  .project-info {
+  /* back-click */
+  .back-click p {
     display: none;
+  }
+
+    /* detail-img */
+  .detail-img-m {
+    margin: 80px 40px 20px;
+  }
+
+  /* detail-img-sb */
+  .detail-img-sb {
+    margin: 0px 40px;
   }
 }
 /* ***************************************************************** */
@@ -80,12 +98,5 @@
 /* ***************************************************************** */
 /* 모바일 작은 사이즈 (max-width: 400px) */
 @media screen and (max-width: 400px) {
-  /* 카테고리 탭 섹션 */
-  .tab-btn {
-    font-size: 14px;
-  }
-  .projects-grid {
-    margin-bottom: 0px;
-  }
 }
 /* ***************************************************************** */
