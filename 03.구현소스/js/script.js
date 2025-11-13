@@ -12,33 +12,58 @@ fetch("./inc/header.html")
       window.location.pathname !== "/" &&
       window.location.pathname.endsWith(".html");
 
-    // Home 링크 설정
-    const homeLink = document.querySelector('.nav a[href="#main"]');
-    if (homeLink && isSubPage) {
-      // 서브페이지에서는 index.html로 이동
-      homeLink.href = "./index.html";
-      homeLink.removeAttribute("data-scroll"); // 스크롤 속성 제거
-    }
-
-    // 부드러운 스크롤 효과
-    document.querySelectorAll('.nav a[href^="#"]').forEach((anchor) => {
-      // 서브페이지에서 ./index.html로 변경된 링크는 제외
-      // 페이지 이동 링크는 preventDefault 하지 않음
-      if (anchor.getAttribute("href").startsWith("./")) {
-        return;
+    /* 서브페이지에서 모든 앵커 링크를 페이지 이동 링크로 변경 */
+    if (isSubPage) {
+      // Home 링크 설정
+      const homeLink = document.querySelector('.nav a[href="#main"]');
+      if (homeLink) {
+        homeLink.href = "./index.html";
+        homeLink.removeAttribute("data-scroll");
       }
 
-      anchor.addEventListener("click", function (e) {
+      // Works 링크 설정
+      const worksLink = document.querySelector('.nav a[href="#works"]');
+      if (worksLink) {
+        worksLink.href = "./works.html";
+        worksLink.removeAttribute("data-scroll");
+      }
+
+      // About Me, Contact 등 다른 #로 시작하는 링크들도 처리
+      // (이미 .html 파일로 링크되어 있다면 이 부분은 영향 없음)
+    }
+
+    /* 서브페이지 이동 시 페이드 효과 */
+    document.querySelectorAll('.nav a[href$=".html"]').forEach((link) => {
+      link.addEventListener("click", function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute("href"));
-        if (target) {
-          target.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
+        const href = this.getAttribute("href");
+
+        // 페이드 아웃
+        document.body.style.opacity = "0";
+
+        // 페이드 아웃 후 페이지 이동
+        setTimeout(() => {
+          window.location.href = href;
+        }, 300);
       });
     });
+
+    // 부드러운 스크롤 효과 (메인 페이지에서만 작동)
+    /* 서브페이지가 아닐 때만 스크롤 이벤트 적용 */
+    if (!isSubPage) {
+      document.querySelectorAll('.nav a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+    }
 
     const cursor = document.querySelector(".custom-cursor");
     document.querySelectorAll(".nav a").forEach((element) => {
@@ -50,6 +75,11 @@ fetch("./inc/header.html")
       );
     });
   });
+
+/* 페이지 로드 시 페이드 인 효과 */
+window.addEventListener("load", () => {
+  document.body.style.opacity = "1";
+});
 
 // ************************ footer 불러오기 *************************
 
