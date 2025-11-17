@@ -960,4 +960,31 @@ if (document.querySelector(".projects-grid")) {
   document.addEventListener("DOMContentLoaded", loadProjects);
 }
 
-// ************************************************************
+// ******************* 서브 페이지 셋팅 (about-me) *******************
+
+// 섹션 전체를 관찰
+const sectionObserver = new IntersectionObserver(function (entries) {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      // 섹션 전체에 visible 클래스 추가
+      entry.target.classList.add("visible");
+    }
+  });
+}, {
+  threshold: 0.2,
+  rootMargin: "0px 0px -200px 0px"
+});
+
+// Career와 Connection 섹션만 관찰
+document.addEventListener("DOMContentLoaded", function () {
+  const careerSection = document.querySelector(".career-section");
+  const connectionSection = document.querySelector(".connection-section");
+
+  if (careerSection) {
+    sectionObserver.observe(careerSection);
+  }
+
+  if (connectionSection) {
+    sectionObserver.observe(connectionSection);
+  }
+});
