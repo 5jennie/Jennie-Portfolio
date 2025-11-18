@@ -64,6 +64,22 @@
   }
 
   /* ---------------------------- connect 커넥션 섹션 ---------------------------- */
+  /* 업 버튼 위치 */
+  .arrow-up-right {
+    top: 37px;
+    right: 35px;
+  }
+
+  /* 다운 버튼 위치 */
+  .arrow-down-right {
+    bottom: 35px;
+    right: 35px;
+  }
+
+  /* SVG 화살표 스타일 설정 */
+  .arrow-svg {
+    width: 180px;
+  }
 }
 
 /* ***************************************************************** */
@@ -91,7 +107,25 @@
 @media screen and (max-width: 1180px) {
   /* ---------------------------- career 커리어 섹션 ---------------------------- */
   .table-row .table-col {
-    margin-left: 140px;
+    margin-left: 100px;
+  }
+
+  /* ---------------------------- connect 커넥션 섹션 ---------------------------- */
+  /* 업 버튼 위치 */
+  .arrow-up-right {
+    top: 45px;
+    right: 35px;
+  }
+
+  /* 다운 버튼 위치 */
+  .arrow-down-right {
+    bottom: 40px;
+    right: 35px;
+  }
+
+  /* SVG 화살표 스타일 설정 */
+  .arrow-svg {
+    width: 150px;
   }
 }
 
@@ -100,6 +134,32 @@
 /* ***************************************************************** */
 /* 태블릿 가로 모드 (max-width: 1024px) 아이패드 미니 */
 @media screen and (max-width: 1024px) {
+  .table-row .table-col {
+    margin-left: 65px;
+  }
+
+  /* ---------------------------- connect 커넥션 섹션 ---------------------------- */
+  /* 커넥션 버튼 박스 */
+  .connection-card {
+    padding: 40px;
+  }
+
+  /* 업 버튼 위치 */
+  .arrow-up-right {
+    top: 55px;
+    right: 35px;
+  }
+
+  /* 다운 버튼 위치 */
+  .arrow-down-right {
+    bottom: 55px;
+    right: 35px;
+  }
+
+  /* SVG 화살표 스타일 설정 */
+  .arrow-svg {
+    width: 130px;
+  }
 }
 /* ***************************************************************** */
 
@@ -115,9 +175,44 @@
   .intro-section {
     padding: 100px 80px 0px 80px;
   }
+
   /* ---------------------------- career 커리어 섹션 ---------------------------- */
 
+  /* 헤더 숨기기 */
+  .table-header {
+    display: none;
+  }
+
+  /* 행을 세로 블록으로 */
+  .table-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 30px 0;
+  }
+
+  /* 각 셀에 왼쪽 라벨 추가 */
+  .table-row .table-col {
+    padding-left: 140px;
+    position: relative;
+  }
+
+  /* 라벨 자동 생성 (Corporation, Position, Year) */
+  .table-row .table-col:nth-child(1)::before {
+    content: "Corporation";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    width: 120px;
+  }
+
   /* ---------------------------- connect 커넥션 섹션 ---------------------------- */
+  /* 1열로 변경 */
+  .connection-grid {
+    grid-template-columns: 1fr;
+  }
 
   /* ---------------------------- 마우스 커스텀 ---------------------------- */
   .custom-cursor {
@@ -157,8 +252,53 @@
   }
 
   /* ---------------------------- career 커리어 섹션 ---------------------------- */
+  /* 커리어 섹션 전체 */
+  .career-section {
+    padding: 100px 40px 0px 40px;
+  }
+
+  /* 셀에 왼쪽 라벨 */
+  .table-row .table-col {
+    margin-left: 10px;
+    padding-left: 100px;
+  }
 
   /* ---------------------------- connect 커넥션 섹션 ---------------------------- */
+  /* 커넥션 섹션 전체 */
+  .connection-section {
+    padding: 100px 40px 0px 40px;
+  }
+
+  /* 커넥션 타이틀 스타일 */
+  .container h2 {
+    margin-bottom: 30px;
+  }
+
+  /* 커넥션 카드 */
+  .connection-card {
+    min-height: 0px;
+    padding: 25px;
+  }
+
+  /* SVG 화살표 스타일 */
+  .arrow-svg {
+    width: 50px;
+    position: absolute;
+    pointer-events: none;
+    opacity: 1;
+  }
+
+  /* 업 버튼 위치 */
+  .arrow-up-right {
+    top: 35px;
+    right: 35px;
+  }
+
+  /* 다운 버튼 위치 */
+  .arrow-down-right {
+    bottom: 35px;
+    right: 35px;
+  }
 }
 
 /* ***************************************************************** */

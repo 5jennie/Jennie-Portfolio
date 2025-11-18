@@ -87,6 +87,33 @@ fetch("./inc/footer.html")
   .then((response) => response.text())
   .then((data) => {
     document.getElementById("footer").innerHTML = data;
+
+    // scroll to top 버튼 셋팅 위치 : 
+    // footer.html, footer.css 파일에 셋팅 되어 있음
+    /* Scroll to Top 버튼 기능 */
+    /* footer 로드 후 Scroll to Top 버튼 설정 */
+    const scrollToTopBtn = document.getElementById("scrollToTop");
+
+    if (scrollToTopBtn) {
+      // 클릭 시 부드럽게 맨 위로 이동
+      scrollToTopBtn.addEventListener("click", function () {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
+      // 커스텀 커서 호버 효과
+      const cursor = document.querySelector(".custom-cursor");
+      if (cursor) {
+        scrollToTopBtn.addEventListener("mouseenter", () => {
+          cursor.classList.add("active");
+        });
+        scrollToTopBtn.addEventListener("mouseleave", () => {
+          cursor.classList.remove("active");
+        });
+      }
+    }
   });
 
 // ************************ 반응 셋팅 *************************
@@ -963,17 +990,20 @@ if (document.querySelector(".projects-grid")) {
 // ******************* 서브 페이지 셋팅 (about-me) *******************
 
 // 섹션 전체를 관찰
-const sectionObserver = new IntersectionObserver(function (entries) {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      // 섹션 전체에 visible 클래스 추가
-      entry.target.classList.add("visible");
-    }
-  });
-}, {
-  threshold: 0.2,
-  rootMargin: "0px 0px -200px 0px"
-});
+const sectionObserver = new IntersectionObserver(
+  function (entries) {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // 섹션 전체에 visible 클래스 추가
+        entry.target.classList.add("visible");
+      }
+    });
+  },
+  {
+    threshold: 0.2,
+    rootMargin: "0px 0px -200px 0px",
+  }
+);
 
 // Career와 Connection 섹션만 관찰
 document.addEventListener("DOMContentLoaded", function () {
