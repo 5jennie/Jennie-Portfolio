@@ -242,13 +242,17 @@
   }
 
   .intro-text h1 {
-    font-size: 35px;
+    font-size: 32px;
   }
   .greeting {
     font-size: 15px;
   }
   .description {
-    font-size: 15px;
+    font-size: 14px;
+  }
+
+  .info-item h3 {
+    font-size: 14px;
   }
 
   /* ---------------------------- career 커리어 섹션 ---------------------------- */
@@ -263,6 +267,15 @@
     padding-left: 100px;
   }
 
+  /* 헤더 텍스트 */
+  .container h2 {
+    font-size: 32px;
+  }
+
+  .table-row .table-col:nth-child(1)::before {
+    font-size: 14px;
+  }
+
   /* ---------------------------- connect 커넥션 섹션 ---------------------------- */
   /* 커넥션 섹션 전체 */
   .connection-section {
@@ -271,7 +284,11 @@
 
   /* 커넥션 타이틀 스타일 */
   .container h2 {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+  }
+
+  .card-content h3 {
+    font-size: 24px;
   }
 
   /* 커넥션 카드 */

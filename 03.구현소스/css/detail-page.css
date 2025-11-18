@@ -107,3 +107,97 @@ body {
   /* 이미지가 컬럼 사이에서 잘리지 않도록 */
   break-inside: avoid;
 }
+
+
+/* ********************* 깃허브 링크 버튼 ********************* */
+/* GitHub 링크 버튼 */
+.github-link {
+  /* 오른쪽 상단에 고정 */
+  position: fixed;
+  top: 13%;
+  right: 75px;
+  transform: translateY(-50%);
+  z-index: 1000;
+}
+
+.github-link a {
+  text-decoration: none;
+}
+
+.github-link p {
+  font-size: 12px;
+  font-weight: 100;
+  letter-spacing: 1px;
+  text-align: center;
+  color: #ffffff;
+
+  /* 원형 보더 - Scroll to Top과 동일 */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgb(255 255 255);
+  border-radius: 50%;
+  background: rgb(0 0 0 / 6%);
+  backdrop-filter: blur(3px);
+  transition: all 0.3s ease;
+}
+
+/* 호버 애니메이션 */
+.github-link p:hover {
+  background: rgb(255 255 255 / 10%);
+  border-color: rgb(255 255 255 / 60%);
+  transform: translateY(-5px);
+}
+
+/* 클릭 애니메이션 */
+.github-link a:active p {
+  transform: translateY(-2px) scale(0.95);
+}
+
+/* GitHub 링크 버튼 */
+.github-link {
+  /* 오른쪽 상단에 고정 */
+  position: fixed;
+  top: 13%;
+  right: 75px;
+  transform: translateY(-50%);
+  z-index: 1000;
+}
+
+.github-link a {
+  text-decoration: none;
+}
+
+.github-link p {
+  font-size: 12px;
+  font-weight: 100;
+  letter-spacing: 1px;
+  text-align: center;
+  color: #ffffff;
+
+  /* 원형 보더 - Scroll to Top과 동일 */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgb(255 255 255);
+  border-radius: 50%;
+  background: rgb(0 0 0 / 6%);
+  backdrop-filter: blur(3px);
+  transition: all 0.3s ease;
+}
+
+/* 호버 애니메이션 */
+.github-link p:hover {
+  background: rgb(255 255 255 / 10%);
+  border-color: rgb(255 255 255 / 60%);
+  transform: translateY(-5px);
+}
+
+/* 클릭 애니메이션 */
+.github-link a:active p {
+  transform: translateY(-2px) scale(0.95);
+}

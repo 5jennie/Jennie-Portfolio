@@ -14,6 +14,7 @@
       "_comment": "=== id 1 (index Works 섹션 + works.html) ===",
       "id": 1,
       "category": "web",
+      "github": "https://github.com/username/project1",
       "image": "./img/works/works (1).gif",
       "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
       "tag": "WEB DESIGN<br />1920*",
@@ -31,6 +32,7 @@
       "_comment": "=== id 2 (index Works 섹션 + works.html) ===",
       "id": 2,
       "category": "web",
+      "github": "https://github.com/username/project1",
       "image": "./img/works/works (2).jpg",
       "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
       "tag": "WEB DESIGN<br />1920*",
@@ -48,6 +50,7 @@
       "_comment": "=== id 3 (index Works 섹션 + works.html) ===",
       "id": 3,
       "category": "web",
+      "github": "https://github.com/username/project1",
       "image": "./img/works/works (2).gif",
       "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
       "tag": "WEB DESIGN<br />1920*",
@@ -143,7 +146,8 @@
         "./img/detail/project1/detail-img-sb (3).jpg",
         "./img/detail/project1/detail-img-sb (4).jpg",
         "./img/detail/project1/detail-img-sb (5).jpg",
-        "./img/detail/project1/detail-img-sb (6).jpg"]
+        "./img/detail/project1/detail-img-sb (6).jpg"
+      ]
     },
     {
       "_comment": "=== id 9 (works.html + index More 섹션) ===",
@@ -159,7 +163,8 @@
         "./img/detail/project1/detail-img-sb (3).jpg",
         "./img/detail/project1/detail-img-sb (4).jpg",
         "./img/detail/project1/detail-img-sb (5).jpg",
-        "./img/detail/project1/detail-img-sb (6).jpg"]
+        "./img/detail/project1/detail-img-sb (6).jpg"
+      ]
     },
     {
       "_comment": "=== id 10 (works.html + index More 섹션) ===",
@@ -175,7 +180,8 @@
         "./img/detail/project1/detail-img-sb (3).jpg",
         "./img/detail/project1/detail-img-sb (4).jpg",
         "./img/detail/project1/detail-img-sb (5).jpg",
-        "./img/detail/project1/detail-img-sb (6).jpg"]
+        "./img/detail/project1/detail-img-sb (6).jpg"
+      ]
     },
     {
       "_comment": "=== id 11 (works.html + index More 섹션) ===",
@@ -191,7 +197,8 @@
         "./img/detail/project1/detail-img-sb (3).jpg",
         "./img/detail/project1/detail-img-sb (4).jpg",
         "./img/detail/project1/detail-img-sb (5).jpg",
-        "./img/detail/project1/detail-img-sb (6).jpg"]
+        "./img/detail/project1/detail-img-sb (6).jpg"
+      ]
     },
     {
       "_comment": "=== id 12 (works.html + index More 섹션) ===",
@@ -207,7 +214,8 @@
         "./img/detail/project1/detail-img-sb (3).jpg",
         "./img/detail/project1/detail-img-sb (4).jpg",
         "./img/detail/project1/detail-img-sb (5).jpg",
-        "./img/detail/project1/detail-img-sb (6).jpg"]
+        "./img/detail/project1/detail-img-sb (6).jpg"
+      ]
     },
     {
       "_comment": "=== id 13 (works.html + index More 섹션) ===",
@@ -223,7 +231,8 @@
         "./img/detail/project1/detail-img-sb (3).jpg",
         "./img/detail/project1/detail-img-sb (4).jpg",
         "./img/detail/project1/detail-img-sb (5).jpg",
-        "./img/detail/project1/detail-img-sb (6).jpg"]
+        "./img/detail/project1/detail-img-sb (6).jpg"
+      ]
     },
     {
       "_comment": "=== id 14 (works.html + index More 섹션) ===",
@@ -239,7 +248,8 @@
         "./img/detail/project1/detail-img-sb (3).jpg",
         "./img/detail/project1/detail-img-sb (4).jpg",
         "./img/detail/project1/detail-img-sb (5).jpg",
-        "./img/detail/project1/detail-img-sb (6).jpg"]
+        "./img/detail/project1/detail-img-sb (6).jpg"
+      ]
     },
     {
       "_comment": "=== id 15 (works.html + index More 섹션) ===",
@@ -255,7 +265,8 @@
         "./img/detail/project1/detail-img-sb (3).jpg",
         "./img/detail/project1/detail-img-sb (4).jpg",
         "./img/detail/project1/detail-img-sb (5).jpg",
-        "./img/detail/project1/detail-img-sb (6).jpg"]
+        "./img/detail/project1/detail-img-sb (6).jpg"
+      ]
     },
     {
       "_comment": "=== id 16 (works.html + index More 섹션) ===",
@@ -271,7 +282,8 @@
         "./img/detail/project1/detail-img-sb (3).jpg",
         "./img/detail/project1/detail-img-sb (4).jpg",
         "./img/detail/project1/detail-img-sb (5).jpg",
-        "./img/detail/project1/detail-img-sb (6).jpg"]
+        "./img/detail/project1/detail-img-sb (6).jpg"
+      ]
     },
     {
       "_comment": "=== id 17 (works.html + index More 섹션) ===",
@@ -287,7 +299,8 @@
         "./img/detail/project1/detail-img-sb (3).jpg",
         "./img/detail/project1/detail-img-sb (4).jpg",
         "./img/detail/project1/detail-img-sb (5).jpg",
-        "./img/detail/project1/detail-img-sb (6).jpg"]
+        "./img/detail/project1/detail-img-sb (6).jpg"
+      ]
     },
     {
       "_comment": "=== id 18 (index More 섹션 마지막) ===",
@@ -303,7 +316,8 @@
         "./img/detail/project1/detail-img-sb (3).jpg",
         "./img/detail/project1/detail-img-sb (4).jpg",
         "./img/detail/project1/detail-img-sb (5).jpg",
-        "./img/detail/project1/detail-img-sb (6).jpg"]
+        "./img/detail/project1/detail-img-sb (6).jpg"
+      ]
     }
   ]
 }
