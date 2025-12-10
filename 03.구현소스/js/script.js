@@ -88,7 +88,7 @@ fetch("./inc/footer.html")
   .then((data) => {
     document.getElementById("footer").innerHTML = data;
 
-    // scroll to top 버튼 셋팅 위치 : 
+    // scroll to top 버튼 셋팅 위치 :
     // footer.html, footer.css 파일에 셋팅 되어 있음
     /* Scroll to Top 버튼 기능 */
     /* footer 로드 후 Scroll to Top 버튼 설정 */
@@ -678,12 +678,19 @@ function setupMainPageProjectLinks() {
   // Works 섹션이 없으면 실행 안함 (다른 페이지)
   if (mainProjects.length === 0) return;
 
+  // 프로젝트 별 카테고리 맵핑
+  const categoryMap = {
+    0: "web", // 프로젝트1 → 웹
+    1: "branding", // 프로젝트2 → 브랜딩
+    2: "promotions", // 프로젝트3 → 프로모션
+  };
+
   // 각 프로젝트에 클릭 이벤트 추가
   mainProjects.forEach((project, index) => {
     // 커서를 포인터로 변경
     project.style.cursor = "pointer";
-    // 프로젝트 ID 부여 (1, 2, 3)
-    const projectId = index + 1;
+    // 프로젝트 ID 대신 카테고리 사용
+    const category = categoryMap[index];
 
     /* 드래그 감지 변수 */
     let isDragging = false; // 드래그 중인지 확인
@@ -708,7 +715,7 @@ function setupMainPageProjectLinks() {
       }
     });
 
-    // 클릭 시 상세 페이지로 이동 (드래그가 아닐 때만)
+    // 클릭 시 works 페이지의 해당 카테고리로 이동 (드래그가 아닐 때만)
     project.addEventListener("click", function (e) {
       // 드래그 중이면 페이지 이동 안함
       if (isDragging) {
@@ -716,7 +723,7 @@ function setupMainPageProjectLinks() {
         return;
       }
       // 단순 클릭이면 상세 페이지로 이동
-      window.location.href = `detail-page.html?id=${projectId}`;
+      window.location.href = `works.html?category=${category}`;
     });
 
     // 마우스 버튼을 놓을 때 (드래그 종료)
@@ -815,6 +822,35 @@ async function loadProjects() {
     const data = await response.json();
     // 전역 변수에 프로젝트 데이터 저장
     allProjects = data.projects;
+
+    // url 파라미터에서 카테고리 정보 가져오기
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryParam = urlParams.get("category");
+
+    // 탭 버튼들 선택
+    const tabButtons = document.querySelectorAll(".tab-btn");
+
+    // URL에 카테고리 파라미터가 있으면 해당 카테고리 선택
+    if (categoryParam) {
+      currentCategory = categoryParam;
+
+      // 모든 탭의 active 클래스 제거 후 해당 카테고리만 활성화
+      tabButtons.forEach((btn) => {
+        btn.classList.remove("active");
+        if (btn.getAttribute("data-category") === categoryParam) {
+          btn.classList.add("active");
+        }
+      });
+    } else {
+      // URL 파라미터가 없으면 All 탭 활성화
+      tabButtons.forEach((btn) => {
+        btn.classList.remove("active");
+        if (btn.getAttribute("data-category") === "all") {
+          btn.classList.add("active");
+        }
+      });
+    }
+
     // 프로젝트 렌더링
     renderProjects();
     // 카테고리 필터 설정
