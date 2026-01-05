@@ -102,17 +102,6 @@ fetch("./inc/footer.html")
           behavior: "smooth",
         });
       });
-
-      // 커스텀 커서 호버 효과
-      const cursor = document.querySelector(".custom-cursor");
-      if (cursor) {
-        scrollToTopBtn.addEventListener("mouseenter", () => {
-          cursor.classList.add("active");
-        });
-        scrollToTopBtn.addEventListener("mouseleave", () => {
-          cursor.classList.remove("active");
-        });
-      }
     }
   });
 
@@ -130,49 +119,6 @@ if (history.scrollRestoration) {
 
 // 부드러운 스크롤 기능
 document.documentElement.style.scrollBehavior = "smooth";
-
-// ******************** 마우스 커서 커스텀 ********************
-
-window.addEventListener("DOMContentLoaded", function () {
-  const cursor = document.querySelector(".custom-cursor");
-
-  if (cursor) {
-    // 마우스 위치 저장 변수
-    let mouseX = 0;
-    let mouseY = 0;
-
-    // 마우스 이동 시 좌표 업데이트
-    document.addEventListener("mousemove", function (e) {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    });
-
-    // 커서를 마우스 위치로 부드럽게 이동
-    function updateCursor() {
-      cursor.style.left = mouseX + "px";
-      cursor.style.top = mouseY + "px";
-      requestAnimationFrame(updateCursor);
-    }
-    updateCursor();
-
-    // 인터랙티브 요소에 호버 시 커서 확대 효과
-    document
-      .querySelectorAll(
-        "a, canvas, .scroll-guide, .project-images-slider1, .project-images-slider2, .project-images-slider3, .more-images, .more-click"
-      )
-      .forEach((element) => {
-        // 마우스 올리면 커서에 'active' 클래스 추가 (확대)
-        element.addEventListener("mouseenter", function () {
-          cursor.classList.add("active");
-        });
-
-        // 마우스 벗어나면 'active' 클래스 제거 (원래 크기)
-        element.addEventListener("mouseleave", function () {
-          cursor.classList.remove("active");
-        });
-      });
-  }
-});
 
 // //////////////////////// 메인 index 셋팅 ////////////////////////
 // ************************ 메인 - gif 설정 ************************
@@ -416,13 +362,13 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       container: ".project-images-slider1",
       images: [
-        "./img/project/project (1).jpg",
-        "./img/project/project (2).jpg",
-        "./img/project/project (3).jpg",
-        "./img/project/project (4).jpg",
-        "./img/project/project (5).jpg",
-        "./img/project/project (6).jpg",
-        "./img/project/project (7).jpg",
+        "./img/project-slider/project (1).jpg",
+        "./img/project-slider/project (2).jpg",
+        "./img/project-slider/project (3).jpg",
+        "./img/project-slider/project (4).jpg",
+        "./img/project-slider/project (5).jpg",
+        "./img/project-slider/project (6).jpg",
+        "./img/project-slider/project (7).jpg",
       ],
       minWidth: 300,
       maxWidth: 600,
@@ -431,13 +377,13 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       container: ".project-images-slider2",
       images: [
-        "./img/project/project (8).jpg",
-        "./img/project/project (9).jpg",
-        "./img/project/project (10).jpg",
-        "./img/project/project (11).jpg",
-        "./img/project/project (12).jpg",
-        "./img/project/project (13).jpg",
-        "./img/project/project (14).jpg",
+        "./img/project-slider/project (8).jpg",
+        "./img/project-slider/project (9).jpg",
+        "./img/project-slider/project (10).jpg",
+        "./img/project-slider/project (11).jpg",
+        "./img/project-slider/project (12).jpg",
+        "./img/project-slider/project (13).jpg",
+        "./img/project-slider/project (14).jpg",
       ],
       minWidth: 300,
       maxWidth: 600,
@@ -446,13 +392,13 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       container: ".project-images-slider3",
       images: [
-        "./img/project/project (15).jpg",
-        "./img/project/project (16).jpg",
-        "./img/project/project (1).jpg",
-        "./img/project/project (4).jpg",
-        "./img/project/project (5).jpg",
-        "./img/project/project (6).jpg",
-        "./img/project/project (7).jpg",
+        "./img/project-slider/project (15).jpg",
+        "./img/project-slider/project (16).jpg",
+        "./img/project-slider/project (1).jpg",
+        "./img/project-slider/project (4).jpg",
+        "./img/project-slider/project (5).jpg",
+        "./img/project-slider/project (6).jpg",
+        "./img/project-slider /project (7).jpg",
       ],
       minWidth: 300,
       maxWidth: 600,
@@ -788,7 +734,7 @@ function setupMoreSectionLinks() {
 
     // 클릭 시 상세 페이지로 이동
     imageDiv.addEventListener("click", function () {
-      window.location.href = `detail-page.html?id=${projectId}`;
+      window.location.href = `detail-page${projectId}.html`;
     });
   });
 }
@@ -907,7 +853,7 @@ function renderProjects() {
 
     // 카드 클릭 시 상세 페이지로 이동
     card.addEventListener("click", function () {
-      window.location.href = `detail-page.html?id=${project.id}`;
+      window.location.href = `detail-page${project.id}.html`;
     });
 
     // 그리드에 카드 추가

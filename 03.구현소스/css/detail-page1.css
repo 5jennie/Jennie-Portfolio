@@ -82,7 +82,7 @@ body {
   transform: scale(0.95);
 }
 
-/* ★추가됨: 화살표 스타일 */
+/* 화살표 스타일 */
 .back-click .back-arrow {
   font-size: 16px;
   font-weight: 100;
@@ -125,72 +125,111 @@ body {
 
 /* ********************* 상세 이미지 셋팅 ********************* */
 
-/* 전체 디테일 페이지 컨테이너 */
-.detail-page {
-  width: 100%;
-  padding: 120px 80px 80px;
-  background: #000;
+/* 상세 전체 이미지*/
+.amuse {
+  position: relative;
+  text-align: center;
+  margin-top: 60px;
 }
 
-/* 메인 큰 이미지 */
-.detail-img-m {
-  max-width: 1400px;
-  margin: 20px auto 40px;
+.amuse img {
+  width: 1400px;
 }
 
-.detail-img-m img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* 2열 그리드 */
-.detail-img-sb {
-  max-width: 1400px;
+/* 박스 슬라이더 */
+.amuse-slider {
+  max-width: 1040px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* 박스 위에 텍스트 */
+.amuse-text {
+  position: absolute;
+  top: 6070px;
+  left: 30%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 300px;
+  line-height: 1.5;
+  font-size: 23px;
+  font-weight: 300;
+  color: black;
+}
+
+/* 슬라이더 보이는 영역 */
+.amuse-slider-wrap {
+  position: absolute;
+  top: 6300px;
+  left: 30%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 810px; /* 2장 보이는 높이 (1장당 400px + gap 10) */
+  overflow: hidden;
+}
+
+/* 슬라이더 트랙 */
+.amuse-slider-track {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.5s ease;
+}
+
+/* 각 슬라이드 */
+.amuse-slide {
+  border: solid 2px #ffffff;
+  width: 100%;
+  height: 400px; /* 1장 높이 */
+  flex-shrink: 0;
+}
+
+/* 슬라이드 위에 up 버튼 */
+.amuse-btn-up {
+  position: absolute;
+  width: 300px;
+  top: 6200px;
+
+  /* 기본 박스 스타일 제거 */
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+/* 슬라이드 아래에 down 버튼 */
+.amuse-btn-down {
+  position: absolute;
+  width: 300px;
+  top: 7150px;
+
+  /* 기본 박스 스타일 제거 */
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.amuse-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 추가 이미지 스타일 */
+/* 이미지 2열 정렬 */
+.long-more {
+  max-width: 1400px;
+  margin: 20px auto;
   column-count: 2;
   column-gap: 20px;
 }
 
-.detail-img-sb img {
+.long-more img {
   width: 100%;
   height: auto;
-  display: block;
-  object-fit: cover;
-  margin-bottom: 20px;
-  /* 이미지가 컬럼 사이에서 잘리지 않도록 */
+  margin-bottom: 15px;
   break-inside: avoid;
-}
-
-/* ********************* 깃허브 링크 버튼 ********************* */
-/* GitHub 링크 버튼 */
-.github-link {
-  /* 오른쪽 정렬 */
-  max-width: 1400px;
-  margin: 100px auto 0;
-  text-align: right;
-}
-
-.github-link a {
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 16px;
-  font-weight: 300;
-  color: #ffffff;
-}
-
-/* 화살표 아이콘 */
-.github-link .arrow-icon {
-  width: 30px;
-  height: 30px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.github-link .arrow-icon img {
-  width: 12px;
-  height: 12px;
 }

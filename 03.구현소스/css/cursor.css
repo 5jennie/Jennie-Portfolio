@@ -1,0 +1,43 @@
+@charset "utf-8";
+
+/* ★추가됨: 마우스 커서 커스텀 (전역 적용) */
+
+.custom-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.3);
+  transition: width 0.3s ease, height 0.3s ease, backdrop-filter 0.3s ease,
+    background 0.3s ease, border 0.3s ease;
+  backdrop-filter: blur(3px);
+  will-change: left, top;
+}
+
+.custom-cursor.active {
+  width: 60px;
+  height: 60px;
+  backdrop-filter: blur(3px);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* 기본 커서 숨기기 */
+body * {
+  cursor: none;
+}
+
+/* 모바일에서는 커스텀 커서 숨김 */
+@media (max-width: 820px) {
+  .custom-cursor {
+    display: none !important;
+  }
+  
+  body * {
+    cursor: auto;
+  }
+}

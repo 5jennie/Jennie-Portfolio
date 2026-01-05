@@ -1,112 +1,95 @@
-// 디테일 페이지 셋팅
+// ★수정됨: 상세 페이지 기본 설정 (자동 렌더링 로직 삭제)
+// 각 detail-page1.html, detail-page2.html 등에서 자유롭게 레이아웃 구성
 
-// URL에서 프로젝트 ID 가져오기
-function getProjectIdFromURL() {
-  const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get("id");
-}
+// GitHub 링크 호버 효과 (커스텀 커서)
+document.addEventListener("DOMContentLoaded", function () {
+  const githubLink = document.querySelector(".github-link a");
+  const cursor = document.querySelector(".custom-cursor");
 
-// 프로젝트 상세 정보 로드
-async function loadProjectDetail() {
-  const projectId = getProjectIdFromURL();
-
-  if (!projectId) {
-    console.error("프로젝트 ID가 없습니다.");
-    return;
-  }
-
-  try {
-    const response = await fetch("./data/projects.json");
-    const data = await response.json();
-
-    const project = data.projects.find((p) => p.id === parseInt(projectId));
-
-    if (project) {
-      renderProjectDetail(project);
-      /* GitHub 링크 설정 호출 */
-      setupGithubLink(project);
-    } else {
-      console.error("프로젝트를 찾을 수 없습니다.");
-    }
-  } catch (error) {
-    console.error("프로젝트 데이터 로드 실패:", error);
-  }
-}
-
-/* 프로젝트 상세 정보 렌더링 */
-function renderProjectDetail(project) {
-  const detailPage = document.querySelector("#detail-page");
-  if (!detailPage) return;
-
-  // 기존 내용 초기화
-  detailPage.innerHTML = "";
-
-  // GitHub GitHub 링크 버튼 먼저 추가
-  const githubLinkDiv = document.createElement("div");
-  githubLinkDiv.className = "github-link";
-  githubLinkDiv.id = "githubLink";
-  githubLinkDiv.style.display = "none";
-  githubLinkDiv.innerHTML = `
-    <a href="" target="_blank" rel="noopener noreferrer">
-      <span>Github</span>
-      <span class="arrow-icon">
-        <img src="./img/svg/up1.svg" alt="arrow" />
-      </span>
-    </a>
-  `;
-  detailPage.appendChild(githubLinkDiv);
-
-  // 메인 이미지
-  const mainImageDiv = document.createElement("div");
-  mainImageDiv.className = "detail-img-m";
-  mainImageDiv.innerHTML = `<img src="${project.detailMainImage}" alt="Project ${project.id}" />`;
-  detailPage.appendChild(mainImageDiv);
-
-  // 서브 이미지들
-  if (project.detailSubImages && project.detailSubImages.length > 0) {
-    const subImagesDiv = document.createElement("div");
-    subImagesDiv.className = "detail-img-sb";
-
-    project.detailSubImages.forEach((imgSrc) => {
-      const img = document.createElement("img");
-      img.src = imgSrc;
-      img.alt = `Project ${project.id} detail`;
-      subImagesDiv.appendChild(img);
+  if (githubLink && cursor) {
+    githubLink.addEventListener("mouseenter", () => {
+      cursor.classList.add("active");
     });
-
-    detailPage.appendChild(subImagesDiv);
+    githubLink.addEventListener("mouseleave", () => {
+      cursor.classList.remove("active");
+    });
   }
-}
+});
 
-/* GitHub 링크 설정 (web 카테고리만) */
-function setupGithubLink(project) {
-  const githubLinkDiv = document.getElementById("githubLink");
-
-  if (!githubLinkDiv) return;
-
-  // web 카테고리이고 github URL이 있으면 표시
-  if (project.category === "web" && project.github) {
-    const link = githubLinkDiv.querySelector("a");
-    link.href = project.github;
-    githubLinkDiv.style.display = "block";
-
-    // 커스텀 커서 호버 효과
-    const cursor = document.querySelector(".custom-cursor");
-    if (cursor) {
-      link.addEventListener("mouseenter", () => {
-        cursor.classList.add("active");
-      });
-      link.addEventListener("mouseleave", () => {
-        cursor.classList.remove("active");
-      });
+// 박스 슬라이더 (무한 루프)
+document.addEventListener("DOMContentLoaded", function () {
+  const track = document.querySelector(".amuse-slider-track");
+  const slides = document.querySelectorAll(".amuse-slide");
+  const btnUp = document.querySelector(".amuse-btn-up");
+  const btnDown = document.querySelector(".amuse-btn-down");
+  
+  if (!track || slides.length === 0) return;
+  
+  const slideHeight = 410; // 1장 높이 + 간격
+  const totalSlides = slides.length;
+  let currentIndex = 0;
+  let isAnimating = false; // 애니메이션 중복 방지
+  
+  // 슬라이드 복제 (앞뒤로 2개씩)
+  const firstClone1 = slides[0].cloneNode(true);
+  const firstClone2 = slides[1].cloneNode(true);
+  const lastClone1 = slides[totalSlides - 1].cloneNode(true);
+  const lastClone2 = slides[totalSlides - 2].cloneNode(true);
+  
+  track.appendChild(firstClone1);
+  track.appendChild(firstClone2);
+  track.insertBefore(lastClone1, slides[0]);
+  track.insertBefore(lastClone2, lastClone1);
+  
+  // 초기 위치 (복제본 때문에 2칸 뒤에서 시작)
+  currentIndex = 2;
+  track.style.transform = `translateY(-${currentIndex * slideHeight}px)`;
+  
+  // 위 버튼 클릭
+  btnUp.addEventListener("click", function () {
+    if (isAnimating) return;
+    isAnimating = true;
+    currentIndex--;
+    moveSlider();
+  });
+  
+  // 아래 버튼 클릭
+  btnDown.addEventListener("click", function () {
+    if (isAnimating) return;
+    isAnimating = true;
+    currentIndex++;
+    moveSlider();
+  });
+  
+  function moveSlider() {
+    track.style.transition = "transform 0.5s ease";
+    track.style.transform = `translateY(-${currentIndex * slideHeight}px)`;
+  }
+  
+  // 애니메이션 끝나면 위치 조정
+  track.addEventListener("transitionend", function () {
+    // 맨 앞 복제본에 도달하면 → 진짜 마지막으로 순간 이동
+    if (currentIndex <= 1) {
+      track.style.transition = "none";
+      currentIndex = totalSlides + 1;
+      track.style.transform = `translateY(-${currentIndex * slideHeight}px)`;
     }
-  } else {
-    // web 카테고리가 아니거나 github URL이 없으면 숨김
-    githubLinkDiv.style.display = "none";
-  }
-}
+    
+    // 맨 뒤 복제본에 도달하면 → 진짜 처음으로 순간 이동
+    if (currentIndex >= totalSlides + 2) {
+      track.style.transition = "none";
+      currentIndex = 2;
+      track.style.transform = `translateY(-${currentIndex * slideHeight}px)`;
+    }
+    
+    isAnimating = false;
+  });
+});
 
-/* 페이지 로드 시 실행 */
-if (document.querySelector("#detail-page")) {
-  document.addEventListener("DOMContentLoaded", loadProjectDetail);
-}
+// 이미지 드레그 방지
+document.addEventListener("DOMContentLoaded", function () {
+  const images = document.querySelectorAll(".amuse-slide img");
+  images.forEach((img) => {
+    img.addEventListener("dragstart", (e) => e.preventDefault());
+  });
+});
