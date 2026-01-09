@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>detail-page - Jennie Portfolio</title>
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <!-- CSS -->
+    <!-- detail-page CSS -->
+    <link rel="stylesheet" href="./css/detail-page2.css" />
+
+    <!-- cursor css -->
+    <link rel="stylesheet" href="./css/cursor.css" />
+
+    <!-- 미디어 쿼리 css -->
+    <link rel="stylesheet" href="./css/media-index.css" />
+    <link rel="stylesheet" href="./css/media-detail.css" />
+  </head>
+
+  <body>
+    <!-- Header 불러올 위치 -->
+    <div id="nav"></div>
+
+    <!-- ***************************************************************** -->
+    <!-- ************************ 오니스트 프로모션 ************************ -->
+
+    <!-- 메인 섹션 -->
+    <!-- detail-page long -->
+    <main id="detail-page">
+      <div class="ownist">
+        <img src="./img/detail/project2/ownist_long.png" alt="ownist img" />
+
+        <!-- 그룹1 - 텍스트 + 오렌지1 (동시 노출) -->
+        <div class="ownist-float-group group-1">
+          <div class="ownist-text">
+            <p class="sub-text1">inner beauty brand</p>
+            <img
+              class="ownist-logo"
+              src="./img/svg/ownist_logo.svg"
+              alt="ownist-logo"
+            />
+            <p class="sub-text2">
+              Experience Ownist,<br />
+              an inner beauty brand that<br />
+              pursues the essence and<br />
+              the radiant beauty within
+            </p>
+          </div>
+
+          <div class="ownist-float orange-1">
+            <img src="./img/detail/project2/orange1.png" alt="orange 1" />
+          </div>
+        </div>
+
+        <!-- 그룹2 - 오렌지2, 오렌지3 (시간차 노출) -->
+        <div class="ownist-float-group group-2">
+          <div class="ownist-float orange-2">
+            <img src="./img/detail/project2/orange2.png" alt="orange 2" />
+          </div>
+
+          <div class="ownist-float orange-3">
+            <img src="./img/detail/project2/orange3.png" alt="orange 3" />
+          </div>
+        </div>
+      </div>
+      <!-- ★수정됨: 부모에 scroll-fade 클래스 -->
+      <div class="more-content scroll-fade">
+        <img
+          src="./img/detail/project2/ownist_content1.png"
+          alt="content-img1"
+        />
+        <img
+          src="./img/detail/project2/ownist_content2.png"
+          alt="content-img2"
+        />
+        <img
+          src="./img/detail/project2/ownist_content3.png"
+          alt="content-img3"
+        />
+        <img
+          src="./img/detail/project2/ownist_content5.png"
+          alt="content-img5"
+        />
+        <img
+          src="./img/detail/project2/ownist_content6.jpg"
+          alt="content-img6"
+        />
+        <img
+          src="./img/detail/project2/ownist_content7.jpg"
+          alt="content-img7"
+        />
+        <img
+          src="./img/detail/project2/ownist_content4.png"
+          alt="content-img4"
+        />
+      </div>
+    </main>
+
+    <!-- ***************************************************************** -->
+    <!-- back 클릭 -->
+    <div class="back-click">
+      <a href="../03.구현소스/works.html">
+        <p>
+          <span class="back-arrow">←</span>
+        </p>
+      </a>
+    </div>
+
+    <!-- ***************************************************************** -->
+
+    <!-- Footer 불러올 위치 -->
+    <div id="footer"></div>
+
+    <!-- 마우스 커서 커스텀 -->
+    <div class="custom-cursor"></div>
+
+    <!-- JavaScript 파일 연결 -->
+    <script src="./js/script.js"></script>
+    <script src="./js/detail-page.js"></script>
+    <script src="./js/detail-page2.js"></script>
+    <script src="./js/cursor.js"></script>
+  </body>
+</html>

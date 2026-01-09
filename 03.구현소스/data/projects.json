@@ -13,152 +13,97 @@
     {
       "_comment": "=== id 1 (index Works 섹션 + works.html) ===",
       "id": 1,
-      "category": "web",
+      "category": "promotions",
       "github": "https://github.com/username/project1",
-      "image": "./img/thumbnail/thumbnail (1).jpg",
-      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
-      "tag": "WEB DESIGN<br />1920*"
+      "image": "./img/thumbnail/thumbnail(1).jpg",
+      "description": "Only the products created in happiness can make our lives joyful. <br />AMUSE 小红书(xiaohongshu) Brand Official Online Store Design",
+      "tag": "promotion<br />Free size"
     },
     {
       "_comment": "=== id 2 (index Works 섹션 + works.html) ===",
       "id": 2,
-      "category": "web",
-      "github": "https://github.com/username/project1",
-      "image": "./img/thumbnail/works (2).gif",
-      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
-      "tag": "WEB DESIGN<br />1920*"
+      "category": "promotions",
+      "github": "https://github.com/username/project2",
+      "image": "./img/thumbnail/thumbnail(2).gif",
+      "description": "an inner beauty brand that pursues essence and radiant beauty from within. Ownist Facebook US Brand Official Channel Content Creation.",
+      "tag": "promotion<br />Free size"
     },
     {
       "_comment": "=== id 3 (index Works 섹션 + works.html) ===",
       "id": 3,
-      "category": "web",
-      "github": "https://github.com/username/project1",
-      "image": "",
-      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
-      "tag": "WEB DESIGN<br />1920*"
+      "category": "promotions",
+      "github": "https://github.com/username/project3",
+      "image": "./img/thumbnail/thumbnail(3).jpg",
+      "description": "Global CrossFire-based Esports League CFS. </br>Weibo & Facebook Global Channel Content Creation",
+      "tag": "promotion<br />Free size"
     },
     {
       "_comment": "=== id 4 (works.html + index More 섹션) ===",
       "id": 4,
       "category": "promotions",
-      "image": "",
+      "github": "https://github.com/username/project3",
+      "image": "./img/thumbnail/thumbnail(4).gif",
       "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
-      "tag": "PROMOTION<br />1920*"
+      "tag": "promotion<br />Free size"
     },
     {
       "_comment": "=== id 5 (works.html + index More 섹션) ===",
       "id": 5,
       "category": "promotions",
-      "image": "./img/works/works (4).jpg",
+      "github": "https://github.com/username/project3",
+      "image": "./img/thumbnail/thumbnail(5).jpg",
       "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
-      "tag": "PROMOTION<br />1920*"
+      "tag": "promotion<br />Free size"
     },
     {
       "_comment": "=== id 6 (works.html + index More 섹션) ===",
       "id": 6,
       "category": "promotions",
-      "image": "./img/works/works (5).jpg",
+      "github": "https://github.com/username/project3",
+      "image": "./img/thumbnail/thumbnail(6).jpg",
       "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
-      "tag": "PROMOTION<br />1920*"
+      "tag": "promotion<br />Free size"
     },
     {
       "_comment": "=== id 7 (works.html + index More 섹션) ===",
       "id": 7,
-      "category": "branding",
-      "image": "",
+      "category": "promotions",
+      "github": "https://github.com/username/project3",
+      "image": "./img/thumbnail/thumbnail(7).jpg",
       "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
-      "tag": "BRANDING<br />1920*"
+      "tag": "promotion<br />Free size"
     },
     {
       "_comment": "=== id 8 (works.html + index More 섹션) ===",
       "id": 8,
-      "category": "branding",
-      "image": "",
-      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
-      "tag": "BRANDING<br />1920*"
+      "category": "branding,web",
+      "image": "./img/thumbnail/thumbnail(8).gif",
+      "description": "ANICUBE.",
+      "tag": "BRANDING<br />Free size"
     },
     {
       "_comment": "=== id 9 (works.html + index More 섹션) ===",
       "id": 9,
       "category": "branding",
-      "image": ".",
-      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
-      "tag": "BRANDING<br />1920*"
+      "image": "./img/thumbnail/thumbnail(9).gif",
+      "description": "K-Village",
+      "tag": "BRANDING<br />Free size"
     },
     {
       "_comment": "=== id 10 (works.html + index More 섹션) ===",
       "id": 10,
       "category": "branding",
-      "image": ".",
-      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
-      "tag": "BRANDING<br />1920*"
+      "image": "./img/thumbnail/thumbnail(10).jpg",
+      "description": "NONO Worry",
+      "tag": "BRANDING<br />Free size"
     },
     {
       "_comment": "=== id 11 (works.html + index More 섹션) ===",
       "id": 11,
-      "category": "promotions",
-      "image": ".",
-      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
-      "tag": "promotions<br />1920*"
-    },
-    {
-      "_comment": "=== id 12 (works.html + index More 섹션) ===",
-      "id": 12,
-      "category": "promotions",
-      "image": ".",
-      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
-      "tag": "promotions<br />1920*"
-    },
-    {
-      "_comment": "=== id 13 (works.html + index More 섹션) ===",
-      "id": 13,
       "category": "web",
-      "github": "https://github.com/username/project1",
-      "image": ".",
-      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
-      "tag": "web<br />1920*"
-    },
-    {
-      "_comment": "=== id 14 (works.html + index More 섹션) ===",
-      "id": 14,
-      "category": "promotions",
-      "image": ".",
-      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
-      "tag": "promotions<br />1920*"
-    },
-    {
-      "_comment": "=== id 15 (works.html + index More 섹션) ===",
-      "id": 15,
-      "category": "promotions",
-      "image": ".",
-      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
-      "tag": "promotions<br />1920*"
-    },
-    {
-      "_comment": "=== id 16 (works.html + index More 섹션) ===",
-      "id": 16,
-      "category": "web",
-      "github": "https://github.com/username/project1",
-      "image": ".",
-      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
-      "tag": "web<br />1920*"
-    },
-    {
-      "_comment": "=== id 17 (works.html + index More 섹션) ===",
-      "id": 17,
-      "category": "web",
-      "github": "https://github.com/username/project1",
-      "image": "",
-      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
-      "tag": "web<br />1920*"
-    },
-    {
-      "_comment": "=== id 18 (index More 섹션 마지막) ===",
-      "id": 18,
-      "category": "branding",
-      "image": "",
-      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
-      "tag": "BRANDING<br />1920*"
+      "image": "./img/thumbnail/thumbnail(11).gif",
+      "description": "Hugo",
+      "tag": "web<br />1920* ~"
     }
   ]
 }

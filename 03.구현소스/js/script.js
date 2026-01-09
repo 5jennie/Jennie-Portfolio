@@ -362,13 +362,13 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       container: ".project-images-slider1",
       images: [
-        "./img/project-slider/project (1).jpg",
-        "./img/project-slider/project (2).jpg",
-        "./img/project-slider/project (3).jpg",
-        "./img/project-slider/project (4).jpg",
-        "./img/project-slider/project (5).jpg",
-        "./img/project-slider/project (6).jpg",
-        "./img/project-slider/project (7).jpg",
+        "./img/project-slider/slider1/project(1).jpg",
+        "./img/project-slider/slider1/project(2).jpg",
+        "./img/project-slider/slider1/project(3).jpg",
+        "./img/project-slider/slider1/project(4).jpg",
+        "./img/project-slider/slider1/project(5).jpg",
+        "./img/project-slider/slider1/project(6).jpg",
+        "./img/project-slider/slider1/project(7).jpg",
       ],
       minWidth: 300,
       maxWidth: 600,
@@ -377,13 +377,13 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       container: ".project-images-slider2",
       images: [
-        "./img/project-slider/project (8).jpg",
-        "./img/project-slider/project (9).jpg",
-        "./img/project-slider/project (10).jpg",
-        "./img/project-slider/project (11).jpg",
-        "./img/project-slider/project (12).jpg",
-        "./img/project-slider/project (13).jpg",
-        "./img/project-slider/project (14).jpg",
+        "./img/project-slider/slider2/project (8).jpg",
+        "./img/project-slider/slider2/project (9).jpg",
+        "./img/project-slider/slider2/project (10).jpg",
+        "./img/project-slider/slider2/project (11).jpg",
+        "./img/project-slider/slider2/project (12).jpg",
+        "./img/project-slider/slider2/project (13).jpg",
+        "./img/project-slider/slider2/project (14).jpg",
       ],
       minWidth: 300,
       maxWidth: 600,
@@ -392,13 +392,13 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       container: ".project-images-slider3",
       images: [
-        "./img/project-slider/project (15).jpg",
-        "./img/project-slider/project (16).jpg",
-        "./img/project-slider/project (1).jpg",
-        "./img/project-slider/project (4).jpg",
-        "./img/project-slider/project (5).jpg",
-        "./img/project-slider/project (6).jpg",
-        "./img/project-slider /project (7).jpg",
+        "./img/project-slider/slider3/project (1).jpg",
+        "./img/project-slider/slider3/project (2).jpg",
+        "./img/project-slider/slider3/project (3).jpg",
+        "./img/project-slider/slider3/project (4).jpg",
+        "./img/project-slider/slider3/project (5).jpg",
+        "./img/project-slider/slider3/project (6).jpg",
+        "./img/project-slider/slider3/project (7).jpg",
       ],
       minWidth: 300,
       maxWidth: 600,
@@ -442,12 +442,27 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!container) return;
 
     const imagePromises = [];
-
+    /* 두 번째 세트 시작 시 첫 번째 세트 마지막 이미지와 중복 방지 */
     // 이미지 생성 (2세트 - 무한 루프용)
+
+    // 첫 번째 세트 마지막 인덱스 계산
+    const lastIndexOfFirstSet = (project.count - 1) % project.images.length;
+
+    // 두 번째 세트 시작 인덱스 (마지막 인덱스 + 1)
+    const secondSetStartIndex =
+      (lastIndexOfFirstSet + 1) % project.images.length;
+
     for (let set = 0; set < 2; set++) {
       for (let i = 0; i < project.count; i++) {
         // 이미지 배열에서 순환하여 선택
-        const imageIndex = i % project.images.length;
+        let imageIndex;
+        if (set === 0) {
+          // 첫 번째 세트: 기존처럼 0부터 시작
+          imageIndex = i % project.images.length;
+        } else {
+          // 두 번째 세트: 첫 번째 세트 마지막 다음 인덱스부터 시작
+          imageIndex = (secondSetStartIndex + i) % project.images.length;
+        }
         const imagePath = project.images[imageIndex];
 
         // minWidth, maxWidth를 함수에 전달하여 이미지 비율에 따라 처리
@@ -626,9 +641,9 @@ function setupMainPageProjectLinks() {
 
   // 프로젝트 별 카테고리 맵핑
   const categoryMap = {
-    0: "web", // 프로젝트1 → 웹
+    0: "promotions", // 프로젝트1 → 프로모션
     1: "branding", // 프로젝트2 → 브랜딩
-    2: "promotions", // 프로젝트3 → 프로모션
+    2: "web", // 프로젝트3 → 웹
   };
 
   // 각 프로젝트에 클릭 이벤트 추가
@@ -821,7 +836,9 @@ function renderProjects() {
   const filteredProjects =
     currentCategory === "all"
       ? allProjects
-      : allProjects.filter((project) => project.category === currentCategory);
+      : allProjects.filter((project) =>
+          project.category.split(",").includes(currentCategory)
+        );
 
   // 페이지네이션 계산
   const startIndex = (currentPage - 1) * itemsPerPage; // 시작 인덱스

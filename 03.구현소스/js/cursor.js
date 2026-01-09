@@ -1,4 +1,4 @@
-// ★추가됨: 마우스 커서 커스텀 (전역 적용)
+// 마우스 커서 커스텀 (전역 적용)
 
 window.addEventListener("DOMContentLoaded", function () {
   const cursor = document.querySelector(".custom-cursor");
@@ -42,10 +42,10 @@ window.addEventListener("DOMContentLoaded", function () {
       ".connection-card"
     ].join(", ");
 
-    // ★추가됨: 호버 효과 제외할 선택자
+    // 호버 효과 제외할 선택자
     const excludeSelectors = ".back-click, .scroll-to-top";
 
-    // ★수정됨: 이벤트 위임 방식 (동적 생성 요소에도 적용)
+    // 이벤트 위임 방식 (동적 생성 요소에도 적용)
     document.addEventListener("mouseover", function (e) {
       const target = e.target.closest(hoverSelectors);
       const excluded = e.target.closest(excludeSelectors);
