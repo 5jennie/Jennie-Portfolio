@@ -41,7 +41,7 @@
       "_comment": "=== id 4 (works.html + index More 섹션) ===",
       "id": 4,
       "category": "promotions",
-      "github": "https://github.com/username/project3",
+      "github": "https://github.com/username/project4",
       "image": "./img/thumbnail/thumbnail(4).gif",
       "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
       "tag": "promotion<br />Free size"
@@ -50,7 +50,7 @@
       "_comment": "=== id 5 (works.html + index More 섹션) ===",
       "id": 5,
       "category": "promotions",
-      "github": "https://github.com/username/project3",
+      "github": "https://github.com/username/project5",
       "image": "./img/thumbnail/thumbnail(5).jpg",
       "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
       "tag": "promotion<br />Free size"
@@ -59,8 +59,8 @@
       "_comment": "=== id 6 (works.html + index More 섹션) ===",
       "id": 6,
       "category": "promotions",
-      "github": "https://github.com/username/project3",
-      "image": "./img/thumbnail/thumbnail(6).jpg",
+      "github": "https://github.com/username/project6",
+      "image": "./img/thumbnail/thumbnail(7).jpg",
       "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
       "tag": "promotion<br />Free size"
     },
@@ -68,8 +68,8 @@
       "_comment": "=== id 7 (works.html + index More 섹션) ===",
       "id": 7,
       "category": "promotions",
-      "github": "https://github.com/username/project3",
-      "image": "./img/thumbnail/thumbnail(7).jpg",
+      "github": "https://github.com/username/project7",
+      "image": "./img/thumbnail/thumbnail(6).jpg",
       "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
       "tag": "promotion<br />Free size"
     },
