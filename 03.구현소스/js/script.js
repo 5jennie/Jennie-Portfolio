@@ -392,13 +392,11 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       container: ".project-images-slider3",
       images: [
-        "./img/project-slider/slider3/project (1).jpg",
-        "./img/project-slider/slider3/project (2).jpg",
-        "./img/project-slider/slider3/project (3).jpg",
-        "./img/project-slider/slider3/project (4).jpg",
-        "./img/project-slider/slider3/project (5).jpg",
-        "./img/project-slider/slider3/project (6).jpg",
-        "./img/project-slider/slider3/project (7).jpg",
+        "./img/project-slider/slider3/project(1).jpg",
+        "./img/project-slider/slider3/project(2).gif",
+        "./img/project-slider/slider3/project(3).png",
+        "./img/project-slider/slider3/project(4).gif",
+        "./img/project-slider/slider3/project(5).jpg",
       ],
       minWidth: 300,
       maxWidth: 600,

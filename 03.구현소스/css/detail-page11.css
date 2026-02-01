@@ -199,3 +199,65 @@ body {
     height: 14px;
   }
 }
+
+/* ***************************************************************** */
+/* URL 링크 버튼 (SVG 이미지) */
+.url-link {
+  /* 오른쪽 상단에 고정 */
+  position: fixed;
+  bottom: 150px;
+  right: 40px;
+  transform: translateY(-50%);
+  z-index: 1000;
+}
+
+.url-link a {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgb(255 255 255);
+  border-radius: 50%;
+  background: rgb(0 0 0 / 6%);
+  backdrop-filter: blur(3px);
+  transition: all 0.3s ease;
+  padding-right: 3px;
+}
+
+.url-link img {
+  width: 15px;
+  filter: brightness(0) invert(1); /* 흰색으로 변환 */
+  transition: all 0.3s ease;
+}
+
+/* 호버 애니메이션 */
+.url-link a:hover {
+  background: rgb(255 255 255 / 10%);
+  border-color: rgb(255 255 255 / 60%);
+  transform: translateY(-3px);
+}
+
+/* 클릭 애니메이션 */
+.url-link a:active {
+  transform: translateY(-1px) scale(0.95);
+}
+
+/* 모바일 반응형 */
+@media (max-width: 820px) {
+  .github-link {
+    right: 20px;
+    top: 10%;
+  }
+
+  .github-link a {
+    width: 30px;
+    height: 30px;
+  }
+
+  .github-link img {
+    width: 14px;
+    height: 14px;
+  }
+}
