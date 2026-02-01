@@ -138,7 +138,7 @@ body {
 /* ********************* 섹션 2 - 오피셜 ********************* */
 .h-official {
   position: absolute;
-  top: 455%;
+  top: 350%;
   left: 228px;
 }
 
@@ -205,7 +205,7 @@ body {
 .promotion-text {
   position: absolute;
   text-align: center;
-  top: 870%;
+  top: 670%;
   left: 37%;
 
   /* 애니메이션 초기 상태 */
@@ -226,20 +226,20 @@ body {
   font-weight: 300;
   line-height: 1.5;
   margin-bottom: 10px;
-  color: #000000;
+  color: #ffffff;
 }
 
 .promotion-text-title {
   font-size: 40px;
   font-weight: 600;
   /* line-height: 1.3; */
-  color: #000000;
+  color: #ffffff;
 }
 
 /* 이미지1 */
 .p-1 {
   position: absolute;
-  top: 890%;
+  top: 690%;
   left: 22%;
 
   /* 애니메이션 초기 상태 */
@@ -248,7 +248,8 @@ body {
   transition: opacity 1s ease, transform 1s ease;
   overflow: hidden;
 }
-/* 이미지1 p-1 등장 */
+
+/* p-1 이미지1 등장 */
 .p-1.visible {
   opacity: 1;
   transform: translateY(0);
@@ -257,11 +258,12 @@ body {
 /* 텍스트1 */
 .t-1 {
   position: absolute;
-  top: 980%;
-  left: 28%;
+  text-align: center;
+  top: 860%;
+  left: 37.5%;
   font-size: 18px;
-  font-weight: 300;
-  color: #000000;
+  font-weight: 200;
+  color: #ffffffc9;
 
   /* 애니메이션 초기 상태 */
   opacity: 0;
@@ -279,7 +281,7 @@ body {
 .p-2 {
   position: absolute;
   top: 890%;
-  left: 22%;
+  left: 12.3%;
 
   /* 애니메이션 초기 상태 */
   opacity: 0;
@@ -296,11 +298,13 @@ body {
 /* 텍스트2 */
 .t-2 {
   position: absolute;
-  top: 1300%;
-  left: 45%;
+  text-align: center;
+  z-index: 1;
+  top: 1064%;
+  left: 46%;
   font-size: 18px;
-  font-weight: 300;
-  color: #000000;
+  font-weight: 200;
+  color: #fffffff9;
   /* 애니메이션 초기 상태 */
   opacity: 0;
   transform: translateY(50px);
@@ -316,8 +320,8 @@ body {
 /* 이미지3 */
 .p-3 {
   position: absolute;
-  top: 890%;
-  left: 22%;
+  top: 1061.5%;
+  left: 12.28%;
 
   /* 애니메이션 초기 상태 */
   opacity: 0;

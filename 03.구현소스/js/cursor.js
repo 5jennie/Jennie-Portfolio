@@ -22,7 +22,7 @@ window.addEventListener("DOMContentLoaded", function () {
     }
     updateCursor();
 
-    // ★수정됨: 호버 효과 적용할 선택자 목록
+    // 호버 효과 적용할 선택자 목록
     const hoverSelectors = [
       "a",
       "button",
@@ -34,22 +34,21 @@ window.addEventListener("DOMContentLoaded", function () {
       ".more-images",
       ".more-click",
       ".project-card",
-      ".github-link",
       ".tab-btn",
       ".pagination-btn",
       ".sticker",
       ".category-tabs",
-      ".connection-card"
+      ".connection-card",
     ].join(", ");
 
     // 호버 효과 제외할 선택자
-    const excludeSelectors = ".back-click, .scroll-to-top";
+    const excludeSelectors = ".back-click, .scroll-to-top, .github-link";
 
     // 이벤트 위임 방식 (동적 생성 요소에도 적용)
     document.addEventListener("mouseover", function (e) {
       const target = e.target.closest(hoverSelectors);
       const excluded = e.target.closest(excludeSelectors);
-      
+
       if (target && !excluded) {
         cursor.classList.add("active");
       }
@@ -58,7 +57,7 @@ window.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("mouseout", function (e) {
       const target = e.target.closest(hoverSelectors);
       const excluded = e.target.closest(excludeSelectors);
-      
+
       if (target && !excluded) {
         cursor.classList.remove("active");
       }

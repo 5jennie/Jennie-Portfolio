@@ -101,6 +101,7 @@
       "_comment": "=== id 11 (works.html + index More 섹션) ===",
       "id": 11,
       "category": "web",
+      "github": "https://github.com/username/hugo-project",
       "image": "./img/thumbnail/thumbnail(11).gif",
       "description": "Hugo",
       "tag": "web<br />1920* ~"
