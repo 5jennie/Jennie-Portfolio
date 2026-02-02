@@ -141,8 +141,8 @@ body {
   position: absolute;
   overflow: hidden;
   width: 1400px;
-  left: 12.28%;
-  top: 308%;
+  left: 12.40%;
+  top: 309%;
   margin: 80px 0;
 }
 
@@ -271,7 +271,7 @@ body {
 .poto_cut3 {
   position: absolute;
   top: 2550px;
-  left: 2px;
+  left: 4px;
   width: 1400px;
 }
 
@@ -301,7 +301,7 @@ body {
 /* ********************* 섹션5 - 가로 슬라이더 이미지 ********************* */
 .ks-slider {
   position: absolute;
-  left: 12.31%;
+  left: 12.40%;
   width: 1400px;
   top: 789.8%;
   overflow: hidden;
@@ -345,7 +345,7 @@ body {
 .ks-cherry {
   position: absolute;
   max-width: 1400px;
-  left: 12.3%;
+  left: 12.4%;
   top: 905%;
 
   /* 애니메이션 초기 상태 */
