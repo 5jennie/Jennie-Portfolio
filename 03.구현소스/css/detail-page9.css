@@ -127,28 +127,77 @@ body {
   }
 }
 
-/* ********************* 애니큐브 브랜딩 ********************* */
+/* ********************* 케이빌리지 브랜딩 ********************* */
 
-/* 홍보 영상 */
-.an-video {
-  position: absolute;
-  top: 600%;
-  width: 1920px;
-}
-.an-video iframe {
-  display: block;
-  margin: 0 auto;
-}
-/* NFT리빌 영상 */
-.an-reville-video {
-  position: absolute;
-  top: 1861%;
+/* ********************* 섹션1 롱 이미지 ********************* */
+.kv-main {
+  position: relative;
+  text-align: center;
+  margin-top: 60px;
 }
 
-.an-reville-video video {
-  width: 50%;
+.kv-main img {
+  width: 1400px;
+}
+
+/* 컨테이너 */
+.kv-video {
+  position: absolute;
+  width: 950px;
+  top: 47.5%;
+  left: 50%;
+  text-align: center;
+  background: #000000;
+
+  /* 애니메이션 초기 상태 - transform 합침 */
+  opacity: 0;
+  transform: translateX(-50%) translateY(50px);
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+
+/* kv-video 등장 */
+.kv-video.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* iframe에 비율 적용 */
+.kv-video iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
   display: block;
-  margin: 0 auto;
-  margin-left: 392px;
-  /* margin-right: auto; */
+  border: none;
+}
+
+/* 홍보영상2 */
+.kv-video2 {
+  position: absolute;
+  width: 950px;
+  top: 55.5%;
+  left: 50%;
+  text-align: center;
+  background: #000000;
+
+  /* 애니메이션 초기 상태 - transform 합침 */
+  opacity: 0;
+  transform: translateX(-50%) translateY(50px);
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+} 
+/* kv-video2 등장 */
+.kv-video2.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+/* iframe에 비율 적용 */
+.kv-video2 iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  display: block;
+  border: none;
 }
