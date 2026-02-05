@@ -2,7 +2,7 @@
 
 document.addEventListener("DOMContentLoaded", function () {
   /* 1. 가로 슬라이더 무한 루프 (이미지 복제) */
-  const track = document.querySelector(".yj-slide-track");
+  const track = document.querySelector(".amuse-slide-track");
   if (track) {
     const slides = track.innerHTML;
     track.innerHTML = slides + slides; // 2세트로 복제
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* 2. 스크롤 애니메이션 - threshold 0.1 (10%) 적용 요소들 */
   const fadeElements = document.querySelectorAll(
-    ".yj-poto, .official-text, .official-img, .promotion-text, .promotion-img"
+    ".amuse-poto, .official-text, .official-img, .promotion-text, .promotion-img"
   );
 
   const fadeObserver = new IntersectionObserver(
@@ -33,8 +33,8 @@ document.addEventListener("DOMContentLoaded", function () {
     fadeObserver.observe(el);
   });
 
-  /* 3. yj-more 전용 Observer - threshold 0 적용 */
-  const yjMoreSection = document.querySelector(".yj-more");
+  /* 3. amuse-more 전용 Observer - threshold 0 적용 */
+  const amuseMoreSection = document.querySelector(".amuse-more");
 
   const moreObserver = new IntersectionObserver(
     (entries) => {
@@ -51,8 +51,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   );
 
-  // yj-more 섹션 관찰 시작
-  if (yjMoreSection) {
-    moreObserver.observe(yjMoreSection);
+  // amuse-more 섹션 관찰 시작
+  if (amuseMoreSection) {
+    moreObserver.observe(amuseMoreSection);
   }
 });
