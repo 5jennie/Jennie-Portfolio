@@ -68,10 +68,10 @@ fetch("./inc/header.html")
     const cursor = document.querySelector(".custom-cursor");
     document.querySelectorAll(".nav a").forEach((element) => {
       element.addEventListener("mouseenter", () =>
-        cursor.classList.add("active")
+        cursor.classList.add("active"),
       );
       element.addEventListener("mouseleave", () =>
-        cursor.classList.remove("active")
+        cursor.classList.remove("active"),
       );
     });
   });
@@ -107,15 +107,24 @@ fetch("./inc/footer.html")
 
 // ************************ 반응 셋팅 *************************
 
-// 페이지 로드 시 최상단으로 이동
-window.onbeforeunload = function () {
-  window.scrollTo(0, 0);
-};
+/* 뒤로가기 시 스크롤 위치 유지, 새로고침 시 최상단 이동 */
+(function () {
+  const navEntries = performance.getEntriesByType("navigation");
+  const isReload = navEntries.length > 0 && navEntries[0].type === "reload";
 
-// 히스토리 사용 시에도 최상단으로 이동
-if (history.scrollRestoration) {
-  history.scrollRestoration = "manual";
-}
+  if (isReload) {
+    // 새로고침: 스크롤 복원 비활성화 -> 최상단 이동
+    if (history.scrollRestoration) {
+      history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+  } else {
+    // 뒤로가기/앞으로가기: 브라우저가 스크롤 위치 복원
+    if (history.scrollRestoration) {
+      history.scrollRestoration = "auto";
+    }
+  }
+})();
 
 // 부드러운 스크롤 기능
 document.documentElement.style.scrollBehavior = "smooth";
@@ -301,6 +310,8 @@ document.addEventListener("DOMContentLoaded", function () {
         isDragging = false;
         // 커서를 grabbing(잡는 중)에서 grab(잡을 수 있음)으로 변경
         currentSticker.style.cursor = "grab";
+        /* ★추가됨: 드래그 종료 시 zIndex 초기화 */
+        currentSticker.style.zIndex = "";
         // 현재 드래그 중인 스티커 초기화
         currentSticker = null;
       }
@@ -313,6 +324,8 @@ document.addEventListener("DOMContentLoaded", function () {
         isDragging = false;
         // 커서를 grabbing에서 grab으로 변경
         currentSticker.style.cursor = "grab";
+        /* ★추가됨: 드래그 종료 시 zIndex 초기화 */
+        currentSticker.style.zIndex = "";
         // 현재 드래그 중인 스티커 초기화
         currentSticker = null;
       }
@@ -377,13 +390,13 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       container: ".project-images-slider2",
       images: [
-        "./img/project-slider/slider2/project (8).jpg",
-        "./img/project-slider/slider2/project (9).jpg",
-        "./img/project-slider/slider2/project (10).jpg",
-        "./img/project-slider/slider2/project (11).jpg",
-        "./img/project-slider/slider2/project (12).jpg",
-        "./img/project-slider/slider2/project (13).jpg",
-        "./img/project-slider/slider2/project (14).jpg",
+        "./img/project-slider/slider2/project(1).png",
+        "./img/project-slider/slider2/project(2).png",
+        "./img/project-slider/slider2/project(3).gif",
+        "./img/project-slider/slider2/project(4).png",
+        "./img/project-slider/slider2/project(5).png",
+        "./img/project-slider/slider2/project(6).png",
+        "./img/project-slider/slider2/project(7).png",
       ],
       minWidth: 300,
       maxWidth: 600,
@@ -465,7 +478,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // minWidth, maxWidth를 함수에 전달하여 이미지 비율에 따라 처리
         imagePromises.push(
-          loadImageWithRatio(imagePath, project.minWidth, project.maxWidth)
+          loadImageWithRatio(imagePath, project.minWidth, project.maxWidth),
         );
       }
     }
@@ -480,8 +493,8 @@ document.addEventListener("DOMContentLoaded", function () {
           src="${data.src}" 
           alt="Project Image ${index + 1}"
           style="width: ${data.width}px; height: ${
-        data.height
-      }px; object-fit: cover;"
+            data.height
+          }px; object-fit: cover;"
         >
       `;
     });
@@ -631,7 +644,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function setupMainPageProjectLinks() {
   // Works 섹션의 모든 프로젝트 아이템 선택
   const mainProjects = document.querySelectorAll(
-    ".works-section .project-item"
+    ".works-section .project-item",
   );
 
   // Works 섹션이 없으면 실행 안함 (다른 페이지)
@@ -835,7 +848,7 @@ function renderProjects() {
     currentCategory === "all"
       ? allProjects
       : allProjects.filter((project) =>
-          project.category.split(",").includes(currentCategory)
+          project.category.split(",").includes(currentCategory),
         );
 
   // 페이지네이션 계산
@@ -918,7 +931,7 @@ function setupPagination() {
         currentCategory === "all"
           ? allProjects
           : allProjects.filter(
-              (project) => project.category === currentCategory
+              (project) => project.category === currentCategory,
             );
 
       // 첫 페이지가 아니면 이전 페이지로 이동
@@ -939,7 +952,7 @@ function setupPagination() {
         currentCategory === "all"
           ? allProjects
           : allProjects.filter(
-              (project) => project.category === currentCategory
+              (project) => project.category === currentCategory,
             );
 
       // 전체 페이지 수 계산
@@ -999,7 +1012,7 @@ const sectionObserver = new IntersectionObserver(
   {
     threshold: 0.2,
     rootMargin: "0px 0px -200px 0px",
-  }
+  },
 );
 
 // Career와 Connection 섹션만 관찰

@@ -27,7 +27,11 @@ html {
 }
 
 body {
-  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    "Pretendard",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   background: #000000;
   color: #ffffff;
 }
@@ -136,4 +140,17 @@ body {
 .an-video iframe {
   display: block;
   margin: 0 auto;
+}
+/* NFT리빌 영상 */
+.an-reville-video {
+  position: absolute;
+  top: 1861%;
+}
+
+.an-reville-video video {
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+  margin-left: 392px;
+  /* margin-right: auto; */
 }

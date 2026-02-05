@@ -10,16 +10,24 @@
     "note": "상세페이지는 detail-page1.html, detail-page2.html 등 개별 파일로 관리"
   },
   "projects": [
-    {
-      "_comment": "=== id 1 (index Works 섹션 + works.html) ===",
-      "id": 1,
+{
+      "_comment": "=== id 1 (works.html + index More 섹션) ===",
+      "id": 4,
       "category": "promotions",
-      "image": "./img/thumbnail/thumbnail(1).jpg",
-      "description": "Only the products created in happiness can make our lives joyful. <br />AMUSE 小红书(xiaohongshu) Brand Official Online Store Design",
+      "image": "./img/thumbnail/thumbnail(4).gif",
+      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
+      "tag": "promotion<br />Free size"
+    },
+        {
+      "_comment": "=== id 2 (works.html + index More 섹션) ===",
+      "id": 7,
+      "category": "promotions",
+      "image": "./img/thumbnail/thumbnail(6).jpg",
+      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
       "tag": "promotion<br />Free size"
     },
     {
-      "_comment": "=== id 2 (index Works 섹션 + works.html) ===",
+      "_comment": "=== id 3 (index Works 섹션 + works.html) ===",
       "id": 2,
       "category": "promotions",
       "image": "./img/thumbnail/thumbnail(2).gif",
@@ -27,23 +35,24 @@
       "tag": "promotion<br />Free size"
     },
     {
-      "_comment": "=== id 3 (index Works 섹션 + works.html) ===",
+      "_comment": "=== id 4 (index Works 섹션 + works.html) ===",
       "id": 3,
       "category": "promotions",
       "image": "./img/thumbnail/thumbnail(3).jpg",
       "description": "Global CrossFire-based Esports League CFS. </br>Weibo & Facebook Global Channel Content Creation",
       "tag": "promotion<br />Free size"
     },
-    {
-      "_comment": "=== id 4 (works.html + index More 섹션) ===",
-      "id": 4,
+        {
+      "_comment": "=== id 5 (index Works 섹션 + works.html) ===",
+      "id": 1,
       "category": "promotions",
-      "image": "./img/thumbnail/thumbnail(4).gif",
-      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
+      "image": "./img/thumbnail/thumbnail(1).jpg",
+      "description": "Only the products created in happiness can make our lives joyful. <br />AMUSE 小红书(xiaohongshu) Brand Official Online Store Design",
       "tag": "promotion<br />Free size"
     },
+    
     {
-      "_comment": "=== id 5 (works.html + index More 섹션) ===",
+      "_comment": "=== id 6 (works.html + index More 섹션) ===",
       "id": 5,
       "category": "promotions",
       "image": "./img/thumbnail/thumbnail(5).jpg",
@@ -51,21 +60,14 @@
       "tag": "promotion<br />Free size"
     },
     {
-      "_comment": "=== id 6 (works.html + index More 섹션) ===",
+      "_comment": "=== id 7 (works.html + index More 섹션) ===",
       "id": 6,
       "category": "promotions",
       "image": "./img/thumbnail/thumbnail(7).jpg",
       "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
       "tag": "promotion<br />Free size"
     },
-    {
-      "_comment": "=== id 7 (works.html + index More 섹션) ===",
-      "id": 7,
-      "category": "promotions",
-      "image": "./img/thumbnail/thumbnail(6).jpg",
-      "description": "www is an online magazine with impersonal content where any path, the project supports criticism and research motion.",
-      "tag": "promotion<br />Free size"
-    },
+
     {
       "_comment": "=== id 8 (works.html + index More 섹션) ===",
       "id": 8,
@@ -77,21 +79,13 @@
     {
       "_comment": "=== id 9 (works.html + index More 섹션) ===",
       "id": 9,
-      "category": "branding",
+      "category": "branding,web",
       "image": "./img/thumbnail/thumbnail(9).gif",
       "description": "K-Village",
       "tag": "BRANDING<br />Free size"
     },
     {
       "_comment": "=== id 10 (works.html + index More 섹션) ===",
-      "id": 10,
-      "category": "branding",
-      "image": "./img/thumbnail/thumbnail(10).jpg",
-      "description": "NONO Worry",
-      "tag": "BRANDING<br />Free size"
-    },
-    {
-      "_comment": "=== id 11 (works.html + index More 섹션) ===",
       "id": 11,
       "category": "web",
       "github": "https://github.com/username/hugo-project",
