@@ -1,71 +1,58 @@
-/* ********************* 어뮤즈 프로모션 ********************* */
+/* ********************* 연작 프로모션 스크롤 애니메이션 ********************* */
 
-// 박스 슬라이더 (무한 루프)
 document.addEventListener("DOMContentLoaded", function () {
-  const track = document.querySelector(".amuse-slider-track");
-  const slides = document.querySelectorAll(".amuse-slide");
-  const btnUp = document.querySelector(".amuse-btn-up");
-  const btnDown = document.querySelector(".amuse-btn-down");
-  
-  if (!track || slides.length === 0) return;
-  
-  const slideHeight = 410; // 1장 높이 + 간격
-  const totalSlides = slides.length;
-  let currentIndex = 0;
-  let isAnimating = false; // 애니메이션 중복 방지
-  
-  // 슬라이드 복제 (앞뒤로 2개씩)
-  const firstClone1 = slides[0].cloneNode(true);
-  const firstClone2 = slides[1].cloneNode(true);
-  const lastClone1 = slides[totalSlides - 1].cloneNode(true);
-  const lastClone2 = slides[totalSlides - 2].cloneNode(true);
-  
-  track.appendChild(firstClone1);
-  track.appendChild(firstClone2);
-  track.insertBefore(lastClone1, slides[0]);
-  track.insertBefore(lastClone2, lastClone1);
-  
-  // 초기 위치 (복제본 때문에 2칸 뒤에서 시작)
-  currentIndex = 2;
-  track.style.transform = `translateY(-${currentIndex * slideHeight}px)`;
-  
-  // 위 버튼 클릭
-  btnUp.addEventListener("click", function () {
-    if (isAnimating) return;
-    isAnimating = true;
-    currentIndex--;
-    moveSlider();
-  });
-  
-  // 아래 버튼 클릭
-  btnDown.addEventListener("click", function () {
-    if (isAnimating) return;
-    isAnimating = true;
-    currentIndex++;
-    moveSlider();
-  });
-  
-  function moveSlider() {
-    track.style.transition = "transform 0.5s ease";
-    track.style.transform = `translateY(-${currentIndex * slideHeight}px)`;
+  /* 1. 가로 슬라이더 무한 루프 (이미지 복제) */
+  const track = document.querySelector(".yj-slide-track");
+  if (track) {
+    const slides = track.innerHTML;
+    track.innerHTML = slides + slides; // 2세트로 복제
   }
-  
-  // 애니메이션 끝나면 위치 조정
-  track.addEventListener("transitionend", function () {
-    // 맨 앞 복제본에 도달하면 → 진짜 마지막으로 순간 이동
-    if (currentIndex <= 1) {
-      track.style.transition = "none";
-      currentIndex = totalSlides + 1;
-      track.style.transform = `translateY(-${currentIndex * slideHeight}px)`;
+
+  /* 2. 스크롤 애니메이션 - threshold 0.1 (10%) 적용 요소들 */
+  const fadeElements = document.querySelectorAll(
+    ".yj-poto, .official-text, .official-img, .promotion-text, .promotion-img"
+  );
+
+  const fadeObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.2, // 요소가 20% 보일 때 실행
+      rootMargin: "0px 0px -50px 0px",
     }
-    
-    // 맨 뒤 복제본에 도달하면 → 진짜 처음으로 순간 이동
-    if (currentIndex >= totalSlides + 2) {
-      track.style.transition = "none";
-      currentIndex = 2;
-      track.style.transform = `translateY(-${currentIndex * slideHeight}px)`;
-    }
-    
-    isAnimating = false;
+  );
+
+  // 각 요소 관찰 시작
+  fadeElements.forEach((el) => {
+    fadeObserver.observe(el);
   });
+
+  /* 3. yj-more 전용 Observer - threshold 0 적용 */
+  const yjMoreSection = document.querySelector(".yj-more");
+
+  const moreObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          moreObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0, // 요소가 조금이라도 보이면 실행
+      rootMargin: "0px 0px -50px 0px",
+    }
+  );
+
+  // yj-more 섹션 관찰 시작
+  if (yjMoreSection) {
+    moreObserver.observe(yjMoreSection);
+  }
 });

@@ -1,0 +1,48 @@
+@charset "utf-8";
+
+/* PC 미만 ~ 태블릿 가로 (max-width: 1400px) */
+@media screen and (max-width: 1400px) {
+  .amuse img, 
+  .amuse-poto, 
+  .amuse-official, 
+  .amuse-slider, 
+  .promotion-img {
+    width: 95% !important; /* 화면 너비에 맞게 축소 */
+  }
+
+  /* 슬라이더 높이 유동적으로 조정 */
+  .amuse-slide-track > div {
+    height: 50vw;
+  }
+}
+
+/* 태블릿 세로 및 모바일 (max-width: 820px) */
+@media screen and (max-width: 820px) {
+  .official-text-title, 
+  .promotion-text-title {
+    font-size: 26px; /* media-index 규격 */
+  }
+
+  .long-more {
+    column-count: 1; /* 모바일은 1열로 */
+    padding: 0 20px;
+  }
+
+  .back-click {
+    right: 20px;
+    bottom: 40px;
+  }
+}
+
+/* 작은 모바일 (max-width: 430px) */
+@media screen and (max-width: 430px) {
+  .official-text-title, 
+  .promotion-text-title {
+    font-size: 20px;
+  }
+  
+  .official-text-sub, 
+  .promotion-text-sub {
+    font-size: 14px;
+  }
+}
