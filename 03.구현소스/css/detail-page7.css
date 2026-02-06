@@ -125,7 +125,7 @@ body {
 }
 
 /* ********************* 힌스 프로모션 ********************* */
-/* ********************* 섹션1 롱 이미지 ********************* */
+/* ********************* 섹션 1 - 상세 전체 이미지 ********************* */
 .h {
   position: relative;
   text-align: center;
@@ -136,25 +136,24 @@ body {
   width: 1400px;
 }
 
+/* ********************* 섹션 3 - 추가 이미지 스타일 ********************* */
 
-/* ********************* 섹션 6 - 추가 이미지 ********************* */
-
-/* 이미지 2열 정렬 - 초기 상태 */
+/* 이미지 2열 정렬 */
 .h-more {
   max-width: 1400px;
   min-height: 200px;
   margin: 80px auto;
   column-count: 2;
   column-gap: 20px;
-
-  /* 애니메이션 초기 상태 */
+  
+  /* 애니메이션 초기 상태 (detail-page7 방식) */
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 1s ease, transform 1s ease;
   overflow: hidden;
 }
 
-/* h-more 등장 */
+/* 스크롤 시 보이는 상태 */
 .h-more.visible {
   opacity: 1;
   transform: translateY(0);

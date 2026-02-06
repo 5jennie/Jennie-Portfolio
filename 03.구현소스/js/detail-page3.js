@@ -115,12 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 6단계: official-text
   if (officialText) {
-    fadeObserver.observe(officialText);
-  }
-
-  // 7단계: promotion-img
-  if (promotionImg) {
-    fadeObserver.observe(promotionImg);
+    officialObserver.observe(officialText);
   }
 
   // 8단계: cfs-more
