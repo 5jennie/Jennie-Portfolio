@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-/* ★추가됨: 마우스 커서 커스텀 (전역 적용) */
+/* 마우스 커서 커스텀 (전역 적용) */
 
 .custom-cursor {
   position: fixed;

@@ -15,6 +15,7 @@
 
 /* 미디어 쿼리 */
 @import url(./media-detail.css);
+@import url(./media-detail-page3.css);
 
 * {
   margin: 0;
@@ -27,7 +28,11 @@ html {
 }
 
 body {
-  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    "Pretendard",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   background: #000000;
   color: #ffffff;
 }
@@ -133,6 +138,7 @@ body {
 
 .cfs img {
   width: 1400px;
+  max-width: 100%;
 }
 
 /* cfs-text 초기 상태 (숨김) */
@@ -146,7 +152,9 @@ body {
 
   /* 애니메이션 초기 상태 */
   opacity: 0;
-  transition: opacity 1s ease, transform 3s ease;
+  transition:
+    opacity 1s ease,
+    transform 3s ease;
 }
 
 /* cfs-text 등장 애니메이션 */
@@ -174,7 +182,11 @@ body {
 .cfs-still {
   position: absolute;
   top: 423%;
-  left: 228px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .still-cuts {
@@ -192,7 +204,9 @@ body {
   /* 애니메이션 초기 상태 */
   opacity: 0;
   transform: translateY(50px);
-  transition: opacity 1s ease, transform 1s ease;
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
 }
 
 /* still-cut1 등장 애니메이션 */
@@ -218,7 +232,9 @@ body {
 
   /* 애니메이션 초기 상태 */
   opacity: 0;
-  transition: opacity 1s ease, transform 1s ease;
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
 }
 
 /* still-cut2 등장 애니메이션 (오른쪽에서 왼쪽으로) */
@@ -261,24 +277,28 @@ body {
 }
 
 /* 섹션 3 - 전체 너비 스틸컷 - 초기 상태 */
+/* 중앙 정렬로 변경 */
 .still-cut3 {
   position: absolute;
   top: 560%;
-  left: 325px;
+  left: 50%;
+  transform: translateX(-50%) translateY(50px);
   padding: 150px 0 80px;
   background: #000000;
   text-align: center;
+  width: 100%;
 
   /* 애니메이션 초기 상태 */
   opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 1s ease, transform 1s ease;
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
 }
 
 /* still-cut3 등장 */
 .still-cut3.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(-50%) translateY(0);
 }
 
 .still-cut3 img {
@@ -289,23 +309,27 @@ body {
 }
 
 /* 섹션 4 - 플레이 영상 - 초기 상태 */
+/* 중앙 정렬로 변경 */
 .cfs-video {
   position: absolute;
   top: 680%;
-  left: 228px;
+  left: 50%;
+  transform: translateX(-50%) translateY(50px); /* 두 개 합침 */
   width: 1400px;
+  max-width: 100%;
   background: #000000;
-  
+
   /* 애니메이션 초기 상태 */
   opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 1s ease, transform 1s ease;
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
 }
 
 /* cfs-video 등장 */
 .cfs-video.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(-50%) translateY(0); /* 중앙 유지하며 위로 */
 }
 
 .cfs-video video {
@@ -322,7 +346,6 @@ body {
   height: 788px;
   display: block;
 }
-
 
 /* ********************* 섹션 5 - 프로모션 ********************* */
 
@@ -359,6 +382,7 @@ body {
 
 /* 이미지 2열 정렬 - 초기 상태 */
 .promotion-img {
+  max-width: 100%;
   position: absolute;
   width: 1000px;
   top: 950%;
@@ -395,7 +419,9 @@ body {
   /* 애니메이션 초기 상태 */
   opacity: 0;
   transform: translateY(50px);
-  transition: opacity 1s ease, transform 1s ease;
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
 }
 
 /* cfs-more 등장 */
