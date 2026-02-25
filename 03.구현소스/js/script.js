@@ -107,27 +107,37 @@ fetch("./inc/footer.html")
 
 // ************************ 반응 셋팅 *************************
 
-/* 뒤로가기 시 스크롤 위치 유지, 새로고침 시 최상단 이동 */
 (function () {
-  const navEntries = performance.getEntriesByType("navigation");
-  const isReload = navEntries.length > 0 && navEntries[0].type === "reload";
-
-  if (isReload) {
-    // 새로고침: 스크롤 복원 비활성화 -> 최상단 이동
-    if (history.scrollRestoration) {
-      history.scrollRestoration = "manual";
-    }
-    window.scrollTo(0, 0);
-  } else {
-    // 뒤로가기/앞으로가기: 브라우저가 스크롤 위치 복원
-    if (history.scrollRestoration) {
-      history.scrollRestoration = "auto";
-    }
+  // 브라우저의 기본 복원 기능을 수동(manual)으로 설정
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
   }
-})();
 
-// 부드러운 스크롤 기능
-document.documentElement.style.scrollBehavior = "smooth";
+  const scrollKey = "scrollY_" + location.pathname;
+
+  // 1. 뒤로가기/새로고침 판별 및 실행
+  window.addEventListener("load", () => {
+    const navEntries = performance.getEntriesByType("navigation");
+    const navType = navEntries.length > 0 ? navEntries[0].type : "";
+    const savedScroll = sessionStorage.getItem(scrollKey);
+
+    if (navType === "back_forward" && savedScroll) {
+      // 비동기 fetch(헤더/푸터)가 끝날 시간을 벌어주기 위해 setTimeout 사용
+      setTimeout(() => {
+        window.scrollTo(0, parseInt(savedScroll));
+      }, 100); 
+    } else if (navType === "reload") {
+      // 새로고침 시 최상단
+      window.scrollTo(0, 0);
+      sessionStorage.removeItem(scrollKey);
+    }
+  });
+
+  // 2. 페이지를 떠나기 전 스크롤 위치 저장 (beforeunload는 모바일에서 불안정할 수 있어 pagehide 권장)
+  window.addEventListener("pagehide", () => {
+    sessionStorage.setItem(scrollKey, window.scrollY);
+  });
+})();
 
 // //////////////////////// 메인 index 셋팅 ////////////////////////
 // ************************ 메인 - gif 설정 ************************
