@@ -1,109 +1,134 @@
 @charset "utf-8";
 
-/* PC 미만 ~ 노트북/태블릿 가로 (max-width: 1400px) */
-@media screen and (max-width: 1400px) {
-  /* 1. 롱이미지 섹션 (HTML의 클래스 .an에 맞춤) */
-  .an {
-    width: 100%;
-  }
-  .an img {
-    width: 100% !important;
-    height: auto;
-  }
+/* 외부 css 컴포넌트 불러오기 */
+@import url(./header.css);
+@import url(./footer.css);
 
-  /* 2. 홍보 영상 */
-  .an-video {
-    width: 1400px;
-    top: 433%;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  .an-video iframe {
-    width: 100%;
-    height: 675px;
-  }
+/* 미디어 쿼리 */
+@import url(./media-detail.css);
+@import url(./media-detail-page8.css);
 
-  /* 3. NFT 리빌 영상 */
-  .an-reville-video {
-    top: 1329%;
-    width: 52%;
-    left: 140px;
-  }
-  .an-reville-video video {
-    width: 60%;
-    margin: 0 auto !important;
-    display: block;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* 태블릿 및 모바일 공통 (max-width: 820px) */
-@media screen and (max-width: 820px) {
-  .an {
-    width: 100%;
-  }
-  .an img {
-    width: 100% !important;
-    height: auto;
-  }
-
-  /* 2. 홍보 영상 */
-  .an-video {
-    width: 820px;
-    top: 252%;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  .an-video iframe {
-    width: 100%;
-    height: 461px;
-  }
-
-  /* 3. NFT 리빌 영상 */
-  .an-reville-video {
-    top: 753%;
-    width: 50%;
-    left: 89px;
-  }
-  .an-reville-video video {
-    width: 60%;
-    margin: 0 auto !important;
-    display: block;
-  }
+html {
+  overflow-x: hidden;
 }
 
-/* 작은 모바일 (max-width: 430px) */
-@media screen and (max-width: 430px) {
-  .an {
-    width: 100%;
-  }
-  .an img {
-    width: 100% !important;
-    height: auto;
-  }
+body {
+  font-family:
+    "Pretendard",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  background: #000000;
+  color: #ffffff;
+}
 
-  /* 2. 홍보 영상 */
-  .an-video {
-    width: 430px;
-    top: 130%;
+/* ********************* 뒤로가기 버튼 ********************* */
+.back-click {
+  position: fixed;
+  right: 40px;
+  bottom: 80px;
+  width: 30px;
+  height: 30px;
+  z-index: 9999;
+  transition: all 0.3s ease;
+}
+.back-click a { text-decoration: none; }
+.back-click p {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #ffffff;
+  background: rgb(0 0 0 / 6%);
+  backdrop-filter: blur(3px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.back-click:hover p {
+  background: rgb(255 255 255 / 10%);
+  border-color: rgb(255 255 255 / 60%);
+}
+.back-click:active p { transform: scale(0.95); }
+.back-click .back-arrow {
+  font-size: 16px;
+  font-weight: 100;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+.back-click:hover .back-arrow {
+  animation: arrowBounceBack 0.6s ease infinite;
+}
+@keyframes arrowBounceBack {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-3px); }
+}
+@media (max-width: 820px) {
+  .back-click { right: 20px; bottom: 80px; }
+  .back-click p { width: 30px; height: 30px; }
+  .back-click .back-arrow { font-size: 16px; }
+}
 
-    left: 50%;
+/* ********************* 애니큐브 브랜딩 ********************* */
+
+/* an-wrapper: cfs-wrapper와 동일한 방식
+   width: 1920px = 원본 이미지 너비와 동일 */
+.an-wrapper {
+  position: relative;
+  width: 1920px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* 롱 이미지 */
+.an {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.an img {
+  width: 100%;
+  display: block;
+}
+
+/* ★수정됨: JS 방식 → cfs와 동일한 top% 방식으로 변경
+   계산식: 5297 ÷ 27814 × 100 = 19.04%
+   an-wrapper 높이(= 이미지 높이) 기준으로 고정됨 */
+.an-video {
+  position: absolute;
+  top: 19.04%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  background: #000000;
+}
+
+.an-video iframe {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  display: block;
+}
+
+/* ★수정됨: JS 방식 → cfs와 동일한 top% 방식으로 변경
+   계산식: 16517 ÷ 27814 × 100 = 59.39%
+   an-wrapper 높이(= 이미지 높이) 기준으로 고정됨 */
+.an-reville-video {
+    position: absolute;
+    top: 59.39%;
+    left: 36%;
     transform: translateX(-50%);
-  }
-  .an-video iframe {
-    width: 100%;
-    height: 242px;
-  }
+    width: 31%;
+}
 
-  /* 3. NFT 리빌 영상 */
-  .an-reville-video {
-    top: 366%;
-    width: 50%;
-    left: 46px;
-  }
-  
-  .an-reville-video video {
-    width: 60%;
-    margin: 0 auto !important;
-    display: block;
-  }
+.an-reville-video video {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
 }
