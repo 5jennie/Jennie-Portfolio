@@ -14,7 +14,7 @@
 @import url(./footer.css);
 
 /* 미디어 쿼리 */
-@import url(./media.css);
+@import url(./media-index.css);
 
 * {
   margin: 0;
@@ -38,14 +38,26 @@ body {
 
 /* *********************메인 섹션********************* */
 
-/* 메인 섹션 */
+/* ★수정됨: flex 제거 → position:relative만 유지
+   중앙 정렬은 main-inner가 absolute로 직접 처리 */
 .main {
   width: 100%;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
+  overflow: hidden;
+}
+
+/* ★추가됨: 1440px 고정 컨테이너 (네이버 방식)
+   - 화면 중앙에 고정
+   - 내부 모든 % 값이 1440px 기준으로 계산됨
+   - 화면이 커져도 양쪽 여백만 늘어나고 내부 레이아웃은 그대로 */
+.main-inner {
+  position: absolute;
+  width: 1440px;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* 왼쪽 텍스트 */
@@ -64,6 +76,11 @@ body {
   width: 500px;
   height: 500px;
   z-index: 1000;
+  /* ★추가됨: main-inner 안에서 중앙 고정 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .center-image canvas {
@@ -83,13 +100,13 @@ body {
   letter-spacing: 2px;
 }
 
-/* ************************ */
-/* 중간 이미지 뒤에 스티커 */
 /* 스티커 컨테이너 */
 .stickers-container {
   position: absolute;
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
   pointer-events: none;
 }
 
@@ -201,53 +218,29 @@ body {
   animation-delay: 0.2s;
 }
 
-/* 떠있는 애니메이션 - 각기 다른 움직임 */
+/* 떠있는 애니메이션 */
 @keyframes float1 {
-  0%,
-  100% {
-    transform: translateY(0px) rotate(-2deg);
-  }
-  50% {
-    transform: translateY(-15px) rotate(2deg);
-  }
+  0%, 100% { transform: translateY(0px) rotate(-2deg); }
+  50% { transform: translateY(-15px) rotate(2deg); }
 }
-
 @keyframes float2 {
-  0%,
-  100% {
-    transform: translateY(0px) rotate(3deg);
-  }
-  50% {
-    transform: translateY(-20px) rotate(-3deg);
-  }
+  0%, 100% { transform: translateY(0px) rotate(3deg); }
+  50% { transform: translateY(-20px) rotate(-3deg); }
 }
-
 @keyframes float3 {
-  0%,
-  100% {
-    transform: translateY(0px) rotate(-3deg);
-  }
-  50% {
-    transform: translateY(-18px) rotate(3deg);
-  }
+  0%, 100% { transform: translateY(0px) rotate(-3deg); }
+  50% { transform: translateY(-18px) rotate(3deg); }
 }
-
 @keyframes float4 {
-  0%,
-  100% {
-    transform: translateY(0px) rotate(2deg);
-  }
-  50% {
-    transform: translateY(-12px) rotate(-2deg);
-  }
+  0%, 100% { transform: translateY(0px) rotate(2deg); }
+  50% { transform: translateY(-12px) rotate(-2deg); }
 }
-/* ******************************************** */
 
-/* 하단 스크롤 가이드 */
+/* ★수정됨: left: 50% 주석 해제 → main-inner 1440px 기준 정중앙 */
 .scroll-guide {
   position: absolute;
   bottom: 60px;
-  /* left: 50%; */
+  left: 50%;
   text-align: center;
   transform: translateX(-50%);
   animation: bounce 2s infinite;
@@ -260,7 +253,6 @@ body {
   margin-bottom: 20px;
 }
 
-/* 스크롤 화살표 */
 .arrow {
   font-size: 20px;
   font-weight: 100;
@@ -273,40 +265,24 @@ body {
   border-radius: 63%;
 }
 
-/* 스크롤 애니메이션 */
 @keyframes bounce {
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-10px);
-  }
-  60% {
-    transform: translateY(-5px);
-  }
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
 }
-
-/* ***************************************************** */
 
 /* ********************* Works 섹션 ********************* */
 
 .works-section {
   min-height: 100vh;
-  /* padding: 120px 80px 80px; */
   align-items: flex-start;
 }
 
 .works-container {
   width: 100%;
-  /* max-width: 1400px; */
   margin: 100px auto;
 }
 
-/* 프로젝트 아이템 */
 .project-item {
   margin-bottom: 100px;
   opacity: 0;
@@ -321,7 +297,6 @@ body {
   transform: translateY(0);
 }
 
-/* 프로젝트 구분선 */
 .project-line {
   width: 100%;
   height: 1px;
@@ -329,13 +304,6 @@ body {
   margin-bottom: 40px;
 }
 
-/* 프로젝트 컨텐츠 */
-.project-content {
-  /* padding: 0 80px 50px; */
-}
-
-/* 프로젝트 정보 */
-/* 워크 섹션에 들어가는 텍스트 전체 설정 */
 .project-info {
   display: flex;
   flex-direction: row;
@@ -344,7 +312,6 @@ body {
   padding: 0 80px 0;
 }
 
-/* 프로젝트 제목 */
 .project-title {
   font-size: 32px;
   font-weight: 500;
@@ -353,7 +320,6 @@ body {
   color: #ffffff;
 }
 
-/* 프로젝트 설명 */
 .project-description,
 .project-skill,
 .project-size {
@@ -361,11 +327,9 @@ body {
   font-weight: 100;
   color: rgb(255, 255, 255);
   margin-bottom: 30px;
-  /* 폰트 크기에 비례하는 단위 */
   letter-spacing: 0.05em;
 }
 
-/* 프로젝트 이미지 */
 .project-image {
   flex: 1;
   aspect-ratio: 16 / 10;
@@ -379,40 +343,29 @@ body {
   object-fit: cover;
 }
 
-/* 이미지 자동 슬라이드 효과 */
-
-/* 모든 슬라이더 공통 스타일 */
 .project-images-slider1,
 .project-images-slider2,
 .project-images-slider3 {
   display: flex;
   gap: 5px;
   width: max-content;
-  /* 각 슬라이더에 애니메이션 */
   animation: slideLeft 1500s linear infinite;
   align-items: flex-start;
 }
 
-/* 이미지 공통 스타일 - 크기는 JavaScript에서 설정 */
 .project-images-slider1 img,
 .project-images-slider2 img,
 .project-images-slider3 img {
   object-fit: cover;
   display: block;
-  /* 이미지 드래그 방지 */
   pointer-events: none;
 }
 
 @keyframes slideLeft {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-/* 슬라이더 컨테이너 */
 .project-slider-container {
   overflow-x: scroll;
   cursor: grab;
@@ -420,22 +373,17 @@ body {
 .project-slider-container::-webkit-scrollbar {
   display: none;
 }
-
-/* 드래그 중일 때 커서 변경 */
 .project-slider-container.active {
   cursor: grabbing;
 }
-
-/* 호버 시 일시정지 (3개 프로젝트만) */
 .project-slider-container:hover .project-images-slider1,
 .project-slider-container:hover .project-images-slider2,
 .project-slider-container:hover .project-images-slider3 {
   animation-play-state: paused;
 }
-/* ***************************************************** */
 
 /* ********************* more 섹션 ********************* */
-/* 애니메이션 주기 위해 생성한 클래스 */
+
 .more-container {
   opacity: 0;
   transform: translateY(50px);
@@ -443,19 +391,16 @@ body {
     opacity 0.8s ease,
     transform 0.8s ease;
 }
-
 .more-container.visible {
   opacity: 1;
   transform: translateY(0);
 }
-
 .more-line {
   width: 100%;
   height: 1px;
   background: rgba(255, 255, 255, 0.2);
   margin-bottom: 60px;
 }
-
 .more-title {
   font-size: 32px;
   font-weight: 500;
@@ -464,17 +409,14 @@ body {
   color: #ffffff;
   text-align: center;
 }
-
 .more-click {
   text-align: center;
   transform: translateX(-50%);
   animation: bounce 2s infinite;
 }
-
 .more-click a {
   text-decoration: none;
 }
-
 .more-click p {
   font-size: 16px;
   font-weight: 100;
@@ -484,7 +426,6 @@ body {
   text-align: center;
   text-decoration: none;
 }
-
 .more-click span {
   color: #ffffff;
   font-size: 20px;
@@ -496,24 +437,6 @@ body {
   border: #ffffff solid 1px;
   border-radius: 50%;
 }
-
-/* 모얼 클릭 애니메이션 */
-@keyframes bounce {
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-10px);
-  }
-  60% {
-    transform: translateY(-5px);
-  }
-}
-
 .more-images {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -523,27 +446,21 @@ body {
   padding: 0 80px;
   padding-bottom: 100px;
 }
-
-/* 그리드 아이템 크기 설정 */
 .more-images > div {
   width: 100%;
-  aspect-ratio: 1 / 1; /* 정사각형 비율 */
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   cursor: pointer;
 }
-
 .more-images > div img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   opacity: 0.5;
-  /* 느린 속도의 자연스러운 전환 애니메이션 */
   transition:
     opacity 0.5s ease,
     transform 0.5s ease;
 }
-
-/* 이미지 호버 효과 */
 .more-images > div:hover img {
   opacity: 1;
   transform: scale(1.1);
@@ -551,14 +468,12 @@ body {
 
 /* **********************커서 커스텀********************* */
 
-/* 마우스 커서 커스텀 */
 .custom-cursor {
   position: fixed;
   left: 0;
   top: 0;
   width: 20px;
   height: 20px;
-
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
@@ -573,21 +488,15 @@ body {
   backdrop-filter: blur(3px);
   will-change: left, top;
 }
-
 .custom-cursor.active {
   width: 60px;
   height: 60px;
   backdrop-filter: blur(3px);
   background: rgba(255, 255, 255, 0.3);
 }
-
 .center-image canvas {
   cursor: none;
 }
-
-/* 기본 커서 숨기기 */
 body * {
   cursor: none;
 }
-
-/* ***************************************************** */
