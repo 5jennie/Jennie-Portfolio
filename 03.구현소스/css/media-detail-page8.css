@@ -38,7 +38,9 @@ body {
   z-index: 9999;
   transition: all 0.3s ease;
 }
-.back-click a { text-decoration: none; }
+.back-click a {
+  text-decoration: none;
+}
 .back-click p {
   width: 30px;
   height: 30px;
@@ -55,7 +57,9 @@ body {
   background: rgb(255 255 255 / 10%);
   border-color: rgb(255 255 255 / 60%);
 }
-.back-click:active p { transform: scale(0.95); }
+.back-click:active p {
+  transform: scale(0.95);
+}
 .back-click .back-arrow {
   font-size: 16px;
   font-weight: 100;
@@ -66,13 +70,35 @@ body {
   animation: arrowBounceBack 0.6s ease infinite;
 }
 @keyframes arrowBounceBack {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(-3px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-3px);
+  }
 }
 @media (max-width: 820px) {
-  .back-click { right: 20px; bottom: 80px; }
-  .back-click p { width: 30px; height: 30px; }
-  .back-click .back-arrow { font-size: 16px; }
+  .back-click {
+    right: 20px;
+    bottom: 80px;
+  }
+  .back-click p {
+    width: 30px;
+    height: 30px;
+  }
+  .back-click .back-arrow {
+    font-size: 16px;
+  }
+}
+
+/* 작은 모바일 (max-width: 430px) */
+@media screen and (max-width: 430px) {
+  /* 뒤로가기 버튼 위치 조정 */
+  .back-click {
+    right: 15px;
+    bottom: 60px;
+  }
 }
 
 /* ********************* 애니큐브 브랜딩 ********************* */
@@ -97,7 +123,7 @@ body {
   display: block;
 }
 
-/* ★수정됨: JS 방식 → cfs와 동일한 top% 방식으로 변경
+/* JS 방식
    계산식: 5297 ÷ 27814 × 100 = 19.04%
    an-wrapper 높이(= 이미지 높이) 기준으로 고정됨 */
 .an-video {
@@ -116,15 +142,15 @@ body {
   display: block;
 }
 
-/* ★수정됨: JS 방식 → cfs와 동일한 top% 방식으로 변경
+/* JS 방식
    계산식: 16517 ÷ 27814 × 100 = 59.39%
    an-wrapper 높이(= 이미지 높이) 기준으로 고정됨 */
 .an-reville-video {
-    position: absolute;
-    top: 59.39%;
-    left: 36%;
-    transform: translateX(-50%);
-    width: 31%;
+  position: absolute;
+  top: 59.39%;
+  left: 36%;
+  transform: translateX(-50%);
+  width: 31%;
 }
 
 .an-reville-video video {
