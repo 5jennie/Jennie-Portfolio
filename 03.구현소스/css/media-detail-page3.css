@@ -2,6 +2,34 @@
 
 /* 기본 CSS에 max-width: 100% 추가 후 최적화된 미디어 쿼리 */
 
+/* 공통 미디어 쿼리 */
+.cfs-video {
+  position: absolute;
+  top: 59%; /* 위치는 디자인에 맞게 조정 */
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 100%; /* 부모 너비에 맞춤 */
+  background: transparent; /* 검은 배경 제거 */
+  z-index: 10;
+}
+
+/* ★핵심: 영상 요소의 높이를 고정하지 말고 비율로 설정 */
+.cfs-video video,
+.cfs-video iframe {
+  width: 100%;
+  height: auto; /* 고정 px 제거 */
+  aspect-ratio: 16 / 9; /* 영상이 16:9라면 이 속성 하나로 해결 */
+  display: block;
+  border: none;
+}
+
+/* 만약 오래된 브라우저까지 지원해야 한다면 (선택 사항) */
+@supports not (aspect-ratio: 16 / 9) {
+  .cfs-video iframe {
+    height: 56.25vw; /* 너비의 56.25%를 높이로 가짐 (16:9 비율) */
+  }
+}
+
 /* PC 미만 ~ 태블릿 가로 (max-width: 1400px) */
 @media screen and (max-width: 1400px) {
   /* 메인 이미지 - 기본 CSS의 max-width: 100%가 자동 적용 */
